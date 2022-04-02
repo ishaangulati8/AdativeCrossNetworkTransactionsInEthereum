@@ -38,29 +38,42 @@ contract Mint {
     function getBalance(address addr) public view returns(uint) {
         return balances[addr];
     }
-    
-    function getBalances() public view returns(string[] memory) {
-        string[] memory acount_balance = new string[](10);
-    
-
-        for (uint i=0; i<10; i++){
-            // format account number and balance to strings and concatenate
-            bytes32 i_bytes = bytes32(i);
-            bytes memory bytesString = new bytes(32);
-            for (uint j=0; j<32; j++) {
-                byte char = byte(bytes32(uint(data) * 2 ** (8 * j)));
-                if (char != 0) {
-                    bytesString[j] = char;
-                }
-            }
-            string i_string = string(bytesString);
 
 
-
-
-            acount_balance[i] = : " + balances[accounts[i]];
+    function toString(uint256 value) internal pure returns (string memory) {
+        // Inspired by OraclizeAPI's implementation - MIT licence
+        // https://github.com/oraclize/ethereum-api/blob/b42146b063c7d6ee1358846c198246239e9360e8/oraclizeAPI_0.4.25.sol
+        if (value == 0) {
+            return "0";
         }
-        return acount_balance;
+        uint256 temp = value;
+        uint256 digits;
+        while (temp != 0) {
+            digits++;
+            temp /= 10;
+        }
+        bytes memory buffer = new bytes(digits);
+        while (value != 0) {
+            digits -= 1;
+            buffer[digits] = bytes1(uint8(48 + uint256(value % 10)));
+            value /= 10;
+        }
+        return string(buffer);
+    }
+
+    function getBalances() public view returns(string[10] memory) {
+        string[10] memory account_and_balance;
+    
+        for (uint i=0; i<10; i++){
+            
+            string memory i_str = toString(i);
+            string memory account_str = string(abi.encodePacked("Account ", i_str));  
+            string memory balance_str = toString(balances[accounts[i]]);
+        
+            account_and_balance[i] = string(abi.encodePacked(account_str, ": ", balance_str));
+        }
+
+        return account_and_balance;
     }
 
     // Events allow clients to react to specific
