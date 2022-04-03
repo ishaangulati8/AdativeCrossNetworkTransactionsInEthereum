@@ -29,7 +29,6 @@ function compileContract() {
         const contractFile = tempFile.contracts['Mint.sol']['Mint'];
         return contractFile;
     } catch (err) {
-        console.error(err);
         throw Error(err);
     }
 }

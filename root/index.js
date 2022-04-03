@@ -4,7 +4,7 @@ const Web3 = require('web3');
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const minter = require('./deploy.js');
+const { interactWithContract: minter, getBalances } = require('./deploy.js');
 
 const app = express();
 
@@ -24,7 +24,7 @@ app.listen(PORT, (err) => {
     }
 });
 
-app.use('/', async (req, res, next) => {
+app.use('/random-transaction', async (req, res, next) => {
     try {
         const balances = await minter(web3);
         res.status(200).json({
@@ -35,6 +35,18 @@ app.use('/', async (req, res, next) => {
         next(err)
     }
 });
+
+app.use('/balance', async (req, res, next) => {
+    try {
+        const balances = await getBalances(web3);
+        res.json({
+            success: true,
+            balances,
+        })
+    } catch (error) {
+        next(error);
+    }
+})
 
 app.use((err, req, res, next) => {
     console.log(err);
