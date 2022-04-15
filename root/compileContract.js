@@ -7,7 +7,7 @@ function compileContract() {
     try {
         const OS = process.platform;
         // TODO: Add relative path for windows OS.
-        const CONTRACT_PATH = OS === 'darvin' ? './truffle/contracts/Mint.sol' : './truffle/contracts/Mint.sol'
+        const CONTRACT_PATH = OS === 'darvin' ? './truffle/contracts/Mint.sol' : 'C:\Users\Neha Surana\blockheads\root\truffle\contracts\Mint.sol'
         const contractPath = path.resolve(__dirname, CONTRACT_PATH);
         const source = fs.readFileSync(contractPath, 'utf8');
         const input = {
