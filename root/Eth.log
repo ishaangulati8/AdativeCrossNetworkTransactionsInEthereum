@@ -1,0 +1,380 @@
+INFO [04-02|22:52:12.943] Maximum peer count                       ETH=0 LES=0 total=0
+INFO [04-02|22:52:12.951] Set global gas cap                       cap=50,000,000
+INFO [04-02|22:52:12.951] Allocated trie memory caches             clean=154.00MiB dirty=256.00MiB
+INFO [04-02|22:52:12.951] Allocated cache and file handles         database=/Users/ishaangulati/Desktop/blockchain/BlockHeads/root/blkchain/geth/chaindata cache=512.00MiB handles=5120
+INFO [04-02|22:52:13.328] Opened ancient database                  database=/Users/ishaangulati/Desktop/blockchain/BlockHeads/root/blkchain/geth/chaindata/ancient readonly=false
+INFO [04-02|22:52:13.333] Initialised chain configuration          config="{ChainID: 144 Homestead: 0 DAO: <nil> DAOSupport: false EIP150: 0 EIP155: 0 EIP158: 0 Byzantium: 0 Constantinople: 0 Petersburg: <nil> Istanbul: <nil>, Muir Glacier: <nil>, Berlin: <nil>, London: <nil>, Arrow Glacier: <nil>, Engine: unknown}"
+INFO [04-02|22:52:13.334] Disk storage enabled for ethash caches   dir=/Users/ishaangulati/Desktop/blockchain/BlockHeads/root/blkchain/geth/ethash count=3
+INFO [04-02|22:52:13.335] Disk storage enabled for ethash DAGs     dir=/Users/ishaangulati/Library/Ethash count=2
+INFO [04-02|22:52:13.336] Initialising Ethereum protocol           network=58343 dbversion=8
+INFO [04-02|22:52:13.342] Loaded most recent local header          number=5761 hash=63629c..d21554 td=3,463,254,600 age=11m44s
+INFO [04-02|22:52:13.342] Loaded most recent local full block      number=5761 hash=63629c..d21554 td=3,463,254,600 age=11m44s
+INFO [04-02|22:52:13.342] Loaded most recent local fast block      number=5761 hash=63629c..d21554 td=3,463,254,600 age=11m44s
+INFO [04-02|22:52:13.356] Loaded local transaction journal         transactions=30 dropped=30
+INFO [04-02|22:52:13.357] Regenerated local transaction journal    transactions=0  accounts=0
+WARN [04-02|22:52:13.357] Switch sync mode from fast sync to full sync 
+INFO [04-02|22:52:13.359] Gasprice oracle is ignoring threshold set threshold=2
+WARN [04-02|22:52:13.360] Unclean shutdown detected                booted=2022-04-02T12:33:56-0400 age=10h18m17s
+WARN [04-02|22:52:13.360] Unclean shutdown detected                booted=2022-04-02T18:47:20-0400 age=4h4m53s
+INFO [04-02|22:52:13.360] Starting peer-to-peer node               instance=Geth/v1.10.13-stable/darwin-amd64/go1.17.2
+INFO [04-02|22:52:13.507] New local node record                    seq=1,648,770,195,825 id=a340d04c66cfd995 ip=127.0.0.1 udp=0 tcp=3000
+INFO [04-02|22:52:13.508] Started P2P networking                   self="enode://cd15e08653067dcb4fa7dd15c61770d812426b55ba07332952f5e1c72a482b317ae551e94e75b41a22a6f53aa3fe7636f4ee64f177d5946231347e9c87d14969@127.0.0.1:3000?discport=0"
+INFO [04-02|22:52:13.511] IPC endpoint opened                      url=/Users/ishaangulati/Desktop/blockchain/BlockHeads/root/blkchain/geth.ipc
+INFO [04-02|22:52:13.512] HTTP server started                      endpoint=127.0.0.1:8543 prefix= cors=* vhosts=localhost
+INFO [04-02|22:52:13.582] Etherbase automatically configured       address=0x0cAA0C75eb072ABf72a61dF0a2Cd84A8d8E078da
+INFO [04-02|22:52:16.388] Mapped network port                      proto=tcp extport=3000 intport=3000 interface="UPNP IGDv2-IP1"
+INFO [04-02|22:52:26.697] Updated mining threads                   threads=12
+INFO [04-02|22:52:26.697] Transaction pool price threshold updated price=1,000,000,000
+INFO [04-02|22:52:26.698] Commit new mining work                   number=5762 sealhash=e34807..012428 uncles=0 txs=0 gas=0 fees=0 elapsed="143.169µs"
+INFO [04-02|22:52:29.514] Successfully sealed new block            number=5762 sealhash=e34807..012428 hash=d62e69..63787f elapsed=2.816s
+INFO [04-02|22:52:29.514] 🔨 mined potential block                  number=5762 hash=d62e69..63787f
+INFO [04-02|22:52:29.515] Commit new mining work                   number=5763 sealhash=668d68..413162 uncles=0 txs=0 gas=0 fees=0 elapsed="158.035µs"
+INFO [04-02|22:52:35.061] Successfully sealed new block            number=5763 sealhash=668d68..413162 hash=76b520..b86440 elapsed=5.546s
+INFO [04-02|22:52:35.061] 🔨 mined potential block                  number=5763 hash=76b520..b86440
+INFO [04-02|22:52:35.061] Commit new mining work                   number=5764 sealhash=dae4e4..fac349 uncles=0 txs=0 gas=0 fees=0 elapsed="117.359µs"
+INFO [04-02|22:52:36.876] Successfully sealed new block            number=5764 sealhash=dae4e4..fac349 hash=4915ca..1d7b76 elapsed=1.814s
+INFO [04-02|22:52:36.876] 🔨 mined potential block                  number=5764 hash=4915ca..1d7b76
+INFO [04-02|22:52:36.876] Commit new mining work                   number=5765 sealhash=1883ac..848718 uncles=0 txs=0 gas=0 fees=0 elapsed="97.962µs"
+INFO [04-02|22:52:37.028] Successfully sealed new block            number=5765 sealhash=1883ac..848718 hash=ee0fc0..3be571 elapsed=152.229ms
+INFO [04-02|22:52:37.029] 🔨 mined potential block                  number=5765 hash=ee0fc0..3be571
+INFO [04-02|22:52:37.029] Commit new mining work                   number=5766 sealhash=4f9b69..9187ee uncles=0 txs=0 gas=0 fees=0 elapsed="116.901µs"
+INFO [04-02|22:52:40.990] Successfully sealed new block            number=5766 sealhash=4f9b69..9187ee hash=b1a72a..f74da6 elapsed=3.961s
+INFO [04-02|22:52:40.990] 🔨 mined potential block                  number=5766 hash=b1a72a..f74da6
+INFO [04-02|22:52:40.991] Commit new mining work                   number=5767 sealhash=707f58..931c57 uncles=0 txs=0 gas=0 fees=0 elapsed="191.047µs"
+INFO [04-02|22:52:41.010] Successfully sealed new block            number=5767 sealhash=707f58..931c57 hash=d47d4f..854700 elapsed=19.605ms
+INFO [04-02|22:52:41.010] 🔨 mined potential block                  number=5767 hash=d47d4f..854700
+INFO [04-02|22:52:41.010] Commit new mining work                   number=5768 sealhash=f32869..380aaf uncles=0 txs=0 gas=0 fees=0 elapsed="96.47µs"
+INFO [04-02|22:52:41.165] Successfully sealed new block            number=5768 sealhash=f32869..380aaf hash=68b8cc..272cfd elapsed=154.697ms
+INFO [04-02|22:52:41.165] 🔨 mined potential block                  number=5768 hash=68b8cc..272cfd
+INFO [04-02|22:52:41.165] Commit new mining work                   number=5769 sealhash=8c97cc..5bfcd1 uncles=0 txs=0 gas=0 fees=0 elapsed="135.029µs"
+INFO [04-02|22:52:44.249] Successfully sealed new block            number=5769 sealhash=8c97cc..5bfcd1 hash=df2b82..eb7f50 elapsed=3.084s
+INFO [04-02|22:52:44.249] 🔗 block reached canonical chain          number=5762 hash=d62e69..63787f
+INFO [04-02|22:52:44.250] 🔨 mined potential block                  number=5769 hash=df2b82..eb7f50
+INFO [04-02|22:52:44.250] Commit new mining work                   number=5770 sealhash=3c0bf9..cc598a uncles=0 txs=0 gas=0 fees=0 elapsed="138.449µs"
+INFO [04-02|22:52:48.166] Successfully sealed new block            number=5770 sealhash=3c0bf9..cc598a hash=71e520..400e00 elapsed=3.916s
+INFO [04-02|22:52:48.166] 🔗 block reached canonical chain          number=5763 hash=76b520..b86440
+INFO [04-02|22:52:48.166] 🔨 mined potential block                  number=5770 hash=71e520..400e00
+INFO [04-02|22:52:48.166] Commit new mining work                   number=5771 sealhash=ec1175..75260a uncles=0 txs=0 gas=0 fees=0 elapsed="149.56µs"
+INFO [04-02|22:52:54.753] Successfully sealed new block            number=5771 sealhash=ec1175..75260a hash=315752..0c2371 elapsed=6.587s
+INFO [04-02|22:52:54.754] 🔗 block reached canonical chain          number=5764 hash=4915ca..1d7b76
+INFO [04-02|22:52:54.754] 🔨 mined potential block                  number=5771 hash=315752..0c2371
+INFO [04-02|22:52:54.754] Commit new mining work                   number=5772 sealhash=bbb88f..1c561c uncles=0 txs=0 gas=0 fees=0 elapsed="168.911µs"
+INFO [04-02|22:52:55.346] Successfully sealed new block            number=5772 sealhash=bbb88f..1c561c hash=db8f80..42e57f elapsed=592.450ms
+INFO [04-02|22:52:55.346] 🔗 block reached canonical chain          number=5765 hash=ee0fc0..3be571
+INFO [04-02|22:52:55.346] 🔨 mined potential block                  number=5772 hash=db8f80..42e57f
+INFO [04-02|22:52:55.346] Commit new mining work                   number=5773 sealhash=54d000..1abb9b uncles=0 txs=0 gas=0 fees=0 elapsed="123.579µs"
+INFO [04-02|22:52:58.757] Successfully sealed new block            number=5773 sealhash=54d000..1abb9b hash=371657..8acb10 elapsed=3.410s
+INFO [04-02|22:52:58.757] 🔗 block reached canonical chain          number=5766 hash=b1a72a..f74da6
+INFO [04-02|22:52:58.757] 🔨 mined potential block                  number=5773 hash=371657..8acb10
+INFO [04-02|22:52:58.757] Commit new mining work                   number=5774 sealhash=30cc50..f10509 uncles=0 txs=0 gas=0 fees=0 elapsed="148.421µs"
+INFO [04-02|22:53:04.261] Successfully sealed new block            number=5774 sealhash=30cc50..f10509 hash=f8ae6a..413cd4 elapsed=5.504s
+INFO [04-02|22:53:04.261] 🔗 block reached canonical chain          number=5767 hash=d47d4f..854700
+INFO [04-02|22:53:04.261] 🔨 mined potential block                  number=5774 hash=f8ae6a..413cd4
+INFO [04-02|22:53:04.262] Commit new mining work                   number=5775 sealhash=296e79..2d0ab2 uncles=0 txs=0 gas=0 fees=0 elapsed="178.933µs"
+INFO [04-02|22:53:05.450] Successfully sealed new block            number=5775 sealhash=296e79..2d0ab2 hash=8ff7fc..18793b elapsed=1.188s
+INFO [04-02|22:53:05.450] 🔗 block reached canonical chain          number=5768 hash=68b8cc..272cfd
+INFO [04-02|22:53:05.450] 🔨 mined potential block                  number=5775 hash=8ff7fc..18793b
+INFO [04-02|22:53:05.450] Commit new mining work                   number=5776 sealhash=bac1ab..43b771 uncles=0 txs=0 gas=0 fees=0 elapsed="121.108µs"
+INFO [04-02|22:53:06.487] Successfully sealed new block            number=5776 sealhash=bac1ab..43b771 hash=477115..e787c1 elapsed=1.036s
+INFO [04-02|22:53:06.487] 🔗 block reached canonical chain          number=5769 hash=df2b82..eb7f50
+INFO [04-02|22:53:06.487] 🔨 mined potential block                  number=5776 hash=477115..e787c1
+INFO [04-02|22:53:06.487] Commit new mining work                   number=5777 sealhash=1d6589..ced6da uncles=0 txs=0 gas=0 fees=0 elapsed="123.206µs"
+INFO [04-02|22:53:09.269] Successfully sealed new block            number=5777 sealhash=1d6589..ced6da hash=994e83..5462b3 elapsed=2.782s
+INFO [04-02|22:53:09.269] 🔗 block reached canonical chain          number=5770 hash=71e520..400e00
+INFO [04-02|22:53:09.270] 🔨 mined potential block                  number=5777 hash=994e83..5462b3
+INFO [04-02|22:53:09.270] Commit new mining work                   number=5778 sealhash=b28d7a..7478b0 uncles=0 txs=0 gas=0 fees=0 elapsed="212.785µs"
+WARN [04-02|22:53:11.402] Served eth_sendTransaction               conn=127.0.0.1:64539 reqid=750 t="130.314µs" err="authentication needed: password or unlock"
+INFO [04-02|22:53:15.779] Successfully sealed new block            number=5778 sealhash=b28d7a..7478b0 hash=ca33a0..dccb38 elapsed=6.509s
+INFO [04-02|22:53:15.779] 🔗 block reached canonical chain          number=5771 hash=315752..0c2371
+INFO [04-02|22:53:15.780] 🔨 mined potential block                  number=5778 hash=ca33a0..dccb38
+INFO [04-02|22:53:15.780] Commit new mining work                   number=5779 sealhash=e0edd2..70164b uncles=0 txs=0 gas=0 fees=0 elapsed="128.757µs"
+INFO [04-02|22:53:16.108] Successfully sealed new block            number=5779 sealhash=e0edd2..70164b hash=74bc27..54e82d elapsed=328.923ms
+INFO [04-02|22:53:16.109] 🔗 block reached canonical chain          number=5772 hash=db8f80..42e57f
+INFO [04-02|22:53:16.109] 🔨 mined potential block                  number=5779 hash=74bc27..54e82d
+INFO [04-02|22:53:16.109] Commit new mining work                   number=5780 sealhash=361118..72329e uncles=0 txs=0 gas=0 fees=0 elapsed="118.353µs"
+INFO [04-02|22:53:19.013] Successfully sealed new block            number=5780 sealhash=361118..72329e hash=1c91cc..d35002 elapsed=2.903s
+INFO [04-02|22:53:19.013] 🔗 block reached canonical chain          number=5773 hash=371657..8acb10
+INFO [04-02|22:53:19.013] 🔨 mined potential block                  number=5780 hash=1c91cc..d35002
+INFO [04-02|22:53:19.013] Commit new mining work                   number=5781 sealhash=db671c..c0929e uncles=0 txs=0 gas=0 fees=0 elapsed="118.501µs"
+INFO [04-02|22:53:20.741] Successfully sealed new block            number=5781 sealhash=db671c..c0929e hash=63a26c..99121c elapsed=1.728s
+INFO [04-02|22:53:20.741] 🔗 block reached canonical chain          number=5774 hash=f8ae6a..413cd4
+INFO [04-02|22:53:20.741] 🔨 mined potential block                  number=5781 hash=63a26c..99121c
+INFO [04-02|22:53:20.741] Commit new mining work                   number=5782 sealhash=aa9c9b..ba7fa3 uncles=0 txs=0 gas=0 fees=0 elapsed="133.955µs"
+INFO [04-02|22:53:30.597] Successfully sealed new block            number=5782 sealhash=aa9c9b..ba7fa3 hash=fc13af..81afb4 elapsed=9.855s
+INFO [04-02|22:53:30.597] 🔗 block reached canonical chain          number=5775 hash=8ff7fc..18793b
+INFO [04-02|22:53:30.597] 🔨 mined potential block                  number=5782 hash=fc13af..81afb4
+INFO [04-02|22:53:30.597] Commit new mining work                   number=5783 sealhash=d6e0d6..b15916 uncles=0 txs=0 gas=0 fees=0 elapsed="126.061µs"
+INFO [04-02|22:53:31.564] Successfully sealed new block            number=5783 sealhash=d6e0d6..b15916 hash=8c1233..a056b0 elapsed=967.012ms
+INFO [04-02|22:53:31.564] 🔗 block reached canonical chain          number=5776 hash=477115..e787c1
+INFO [04-02|22:53:31.564] 🔨 mined potential block                  number=5783 hash=8c1233..a056b0
+INFO [04-02|22:53:31.564] Commit new mining work                   number=5784 sealhash=c0a194..b50686 uncles=0 txs=0 gas=0 fees=0 elapsed="122.601µs"
+INFO [04-02|22:53:34.236] Successfully sealed new block            number=5784 sealhash=c0a194..b50686 hash=262008..31c9b2 elapsed=2.671s
+INFO [04-02|22:53:34.236] 🔗 block reached canonical chain          number=5777 hash=994e83..5462b3
+INFO [04-02|22:53:34.236] 🔨 mined potential block                  number=5784 hash=262008..31c9b2
+INFO [04-02|22:53:34.236] Commit new mining work                   number=5785 sealhash=0a2c55..13f865 uncles=0 txs=0 gas=0 fees=0 elapsed="180.846µs"
+INFO [04-02|22:53:38.973] Successfully sealed new block            number=5785 sealhash=0a2c55..13f865 hash=75d76c..107a74 elapsed=4.736s
+INFO [04-02|22:53:38.973] 🔗 block reached canonical chain          number=5778 hash=ca33a0..dccb38
+INFO [04-02|22:53:38.973] 🔨 mined potential block                  number=5785 hash=75d76c..107a74
+INFO [04-02|22:53:38.973] Commit new mining work                   number=5786 sealhash=11b49e..086997 uncles=0 txs=0 gas=0 fees=0 elapsed="145.11µs"
+INFO [04-02|22:53:39.745] Setting new local account                address=0x0cAA0C75eb072ABf72a61dF0a2Cd84A8d8E078da
+INFO [04-02|22:53:39.746] Submitted transaction                    hash=0x6273eb38310dbe77d65d9bf33dbdc0ac94e6807b233a95dee736cfb9b3debb32 from=0x0cAA0C75eb072ABf72a61dF0a2Cd84A8d8E078da nonce=55 recipient=0xE131e4136c6f8B193CbEF6552353ba0D9392D522 value=0
+INFO [04-02|22:53:39.906] Successfully sealed new block            number=5786 sealhash=11b49e..086997 hash=8565d8..57f3a8 elapsed=932.836ms
+INFO [04-02|22:53:39.906] 🔗 block reached canonical chain          number=5779 hash=74bc27..54e82d
+INFO [04-02|22:53:39.906] 🔨 mined potential block                  number=5786 hash=8565d8..57f3a8
+INFO [04-02|22:53:39.906] Commit new mining work                   number=5787 sealhash=b96e81..4efe7d uncles=0 txs=0 gas=0 fees=0 elapsed="166.978µs"
+INFO [04-02|22:53:39.907] Commit new mining work                   number=5787 sealhash=d8066f..1190e7 uncles=0 txs=1 gas=76986 fees=7.6986e-14 elapsed="875.261µs"
+INFO [04-02|22:53:40.471] Successfully sealed new block            number=5787 sealhash=d8066f..1190e7 hash=6ffc12..694918 elapsed=563.582ms
+INFO [04-02|22:53:40.471] 🔗 block reached canonical chain          number=5780 hash=1c91cc..d35002
+INFO [04-02|22:53:40.471] 🔨 mined potential block                  number=5787 hash=6ffc12..694918
+INFO [04-02|22:53:40.471] Commit new mining work                   number=5788 sealhash=cfc173..8d8f40 uncles=0 txs=0 gas=0     fees=0          elapsed="138.075µs"
+INFO [04-02|22:53:41.409] Successfully sealed new block            number=5788 sealhash=cfc173..8d8f40 hash=22bbda..00c2cc elapsed=938.700ms
+INFO [04-02|22:53:41.410] 🔗 block reached canonical chain          number=5781 hash=63a26c..99121c
+INFO [04-02|22:53:41.410] 🔨 mined potential block                  number=5788 hash=22bbda..00c2cc
+INFO [04-02|22:53:41.410] Commit new mining work                   number=5789 sealhash=be9668..2a0934 uncles=0 txs=0 gas=0     fees=0          elapsed="110.583µs"
+INFO [04-02|22:53:42.641] Successfully sealed new block            number=5789 sealhash=be9668..2a0934 hash=0fd8d0..fc055e elapsed=1.231s
+INFO [04-02|22:53:42.641] 🔗 block reached canonical chain          number=5782 hash=fc13af..81afb4
+INFO [04-02|22:53:42.641] 🔨 mined potential block                  number=5789 hash=0fd8d0..fc055e
+INFO [04-02|22:53:42.641] Commit new mining work                   number=5790 sealhash=c1c44a..b760b3 uncles=0 txs=0 gas=0     fees=0          elapsed="126.322µs"
+INFO [04-02|22:53:46.463] Successfully sealed new block            number=5790 sealhash=c1c44a..b760b3 hash=e4dc0d..48072a elapsed=3.822s
+INFO [04-02|22:53:46.463] 🔗 block reached canonical chain          number=5783 hash=8c1233..a056b0
+INFO [04-02|22:53:46.463] 🔨 mined potential block                  number=5790 hash=e4dc0d..48072a
+INFO [04-02|22:53:46.463] Commit new mining work                   number=5791 sealhash=5035c0..0b4ab3 uncles=0 txs=0 gas=0     fees=0          elapsed="129.543µs"
+INFO [04-02|22:53:50.533] Successfully sealed new block            number=5791 sealhash=5035c0..0b4ab3 hash=b730a3..16f5af elapsed=4.069s
+INFO [04-02|22:53:50.533] 🔗 block reached canonical chain          number=5784 hash=262008..31c9b2
+INFO [04-02|22:53:50.533] 🔨 mined potential block                  number=5791 hash=b730a3..16f5af
+INFO [04-02|22:53:50.533] Commit new mining work                   number=5792 sealhash=32d469..277b82 uncles=0 txs=0 gas=0     fees=0          elapsed="169.336µs"
+INFO [04-02|22:53:57.277] Submitted transaction                    hash=0x3a05421b55cf6279b26159afd3e856c5da1b9e7152b96fc8083126cbb3ad461e from=0x0cAA0C75eb072ABf72a61dF0a2Cd84A8d8E078da nonce=56 recipient=0xE131e4136c6f8B193CbEF6552353ba0D9392D522 value=0
+INFO [04-02|22:53:59.602] Commit new mining work                   number=5792 sealhash=3fb979..e5a256 uncles=0 txs=1 gas=36621 fees=3.6621e-05 elapsed=11.280ms
+INFO [04-02|22:54:04.188] Successfully sealed new block            number=5792 sealhash=3fb979..e5a256 hash=39c767..12017d elapsed=4.585s
+INFO [04-02|22:54:04.188] 🔗 block reached canonical chain          number=5785 hash=75d76c..107a74
+INFO [04-02|22:54:04.188] 🔨 mined potential block                  number=5792 hash=39c767..12017d
+INFO [04-02|22:54:04.189] Commit new mining work                   number=5793 sealhash=4c890e..ab9002 uncles=0 txs=0 gas=0     fees=0          elapsed="190.751µs"
+INFO [04-02|22:54:07.853] Successfully sealed new block            number=5793 sealhash=4c890e..ab9002 hash=603e76..a5f055 elapsed=3.664s
+INFO [04-02|22:54:07.853] 🔗 block reached canonical chain          number=5786 hash=8565d8..57f3a8
+INFO [04-02|22:54:07.854] Commit new mining work                   number=5794 sealhash=eaa5aa..773f34 uncles=0 txs=0 gas=0     fees=0          elapsed=1.190ms
+INFO [04-02|22:54:07.854] 🔨 mined potential block                  number=5793 hash=603e76..a5f055
+INFO [04-02|22:54:08.259] Successfully sealed new block            number=5794 sealhash=eaa5aa..773f34 hash=165c24..996190 elapsed=406.330ms
+INFO [04-02|22:54:08.259] 🔗 block reached canonical chain          number=5787 hash=6ffc12..694918
+INFO [04-02|22:54:08.259] 🔨 mined potential block                  number=5794 hash=165c24..996190
+INFO [04-02|22:54:08.259] Commit new mining work                   number=5795 sealhash=53a1cc..331118 uncles=0 txs=0 gas=0     fees=0          elapsed="111.287µs"
+INFO [04-02|22:54:13.610] Successfully sealed new block            number=5795 sealhash=53a1cc..331118 hash=540230..b04094 elapsed=5.350s
+INFO [04-02|22:54:13.610] 🔗 block reached canonical chain          number=5788 hash=22bbda..00c2cc
+INFO [04-02|22:54:13.610] 🔨 mined potential block                  number=5795 hash=540230..b04094
+INFO [04-02|22:54:13.610] Commit new mining work                   number=5796 sealhash=941729..661240 uncles=0 txs=0 gas=0     fees=0          elapsed="112.921µs"
+INFO [04-02|22:54:15.489] Successfully sealed new block            number=5796 sealhash=941729..661240 hash=f5a499..c557a3 elapsed=1.878s
+INFO [04-02|22:54:15.489] 🔗 block reached canonical chain          number=5789 hash=0fd8d0..fc055e
+INFO [04-02|22:54:15.489] 🔨 mined potential block                  number=5796 hash=f5a499..c557a3
+INFO [04-02|22:54:15.489] Commit new mining work                   number=5797 sealhash=addb36..d344d0 uncles=0 txs=0 gas=0     fees=0          elapsed="143.737µs"
+INFO [04-02|22:54:21.799] Successfully sealed new block            number=5797 sealhash=addb36..d344d0 hash=bcb1fe..d05a66 elapsed=6.310s
+INFO [04-02|22:54:21.799] 🔗 block reached canonical chain          number=5790 hash=e4dc0d..48072a
+INFO [04-02|22:54:21.799] Commit new mining work                   number=5798 sealhash=d6dc4c..5b7f80 uncles=0 txs=0 gas=0     fees=0          elapsed="352.637µs"
+INFO [04-02|22:54:21.799] 🔨 mined potential block                  number=5797 hash=bcb1fe..d05a66
+INFO [04-02|22:54:24.608] Successfully sealed new block            number=5798 sealhash=d6dc4c..5b7f80 hash=b69ed4..113d5d elapsed=2.809s
+INFO [04-02|22:54:24.608] 🔗 block reached canonical chain          number=5791 hash=b730a3..16f5af
+INFO [04-02|22:54:24.608] 🔨 mined potential block                  number=5798 hash=b69ed4..113d5d
+INFO [04-02|22:54:24.608] Commit new mining work                   number=5799 sealhash=0954f0..256cf3 uncles=0 txs=0 gas=0     fees=0          elapsed="111.067µs"
+INFO [04-02|22:54:26.371] Successfully sealed new block            number=5799 sealhash=0954f0..256cf3 hash=6a3d75..dd7329 elapsed=1.763s
+INFO [04-02|22:54:26.371] 🔗 block reached canonical chain          number=5792 hash=39c767..12017d
+INFO [04-02|22:54:26.371] 🔨 mined potential block                  number=5799 hash=6a3d75..dd7329
+INFO [04-02|22:54:26.372] Commit new mining work                   number=5800 sealhash=746aae..6c0141 uncles=0 txs=0 gas=0     fees=0          elapsed="119.478µs"
+INFO [04-02|22:54:28.233] Successfully sealed new block            number=5800 sealhash=746aae..6c0141 hash=dc1c80..0d56f3 elapsed=1.861s
+INFO [04-02|22:54:28.233] 🔗 block reached canonical chain          number=5793 hash=603e76..a5f055
+INFO [04-02|22:54:28.233] 🔨 mined potential block                  number=5800 hash=dc1c80..0d56f3
+INFO [04-02|22:54:28.234] Commit new mining work                   number=5801 sealhash=fa26f7..9f3679 uncles=0 txs=0 gas=0     fees=0          elapsed="119.691µs"
+INFO [04-02|22:54:30.939] Successfully sealed new block            number=5801 sealhash=fa26f7..9f3679 hash=e6be8c..de81bf elapsed=2.705s
+INFO [04-02|22:54:30.939] 🔗 block reached canonical chain          number=5794 hash=165c24..996190
+INFO [04-02|22:54:30.939] 🔨 mined potential block                  number=5801 hash=e6be8c..de81bf
+INFO [04-02|22:54:30.939] Commit new mining work                   number=5802 sealhash=029aeb..18203f uncles=0 txs=0 gas=0     fees=0          elapsed="104.522µs"
+INFO [04-02|22:54:32.384] Successfully sealed new block            number=5802 sealhash=029aeb..18203f hash=affd7c..9744b0 elapsed=1.444s
+INFO [04-02|22:54:32.384] 🔗 block reached canonical chain          number=5795 hash=540230..b04094
+INFO [04-02|22:54:32.384] 🔨 mined potential block                  number=5802 hash=affd7c..9744b0
+INFO [04-02|22:54:32.384] Commit new mining work                   number=5803 sealhash=de3be0..46ca97 uncles=0 txs=0 gas=0     fees=0          elapsed="131.099µs"
+INFO [04-02|22:54:32.578] Successfully sealed new block            number=5803 sealhash=de3be0..46ca97 hash=9b114a..4a2c94 elapsed=193.989ms
+INFO [04-02|22:54:32.578] 🔗 block reached canonical chain          number=5796 hash=f5a499..c557a3
+INFO [04-02|22:54:32.578] 🔨 mined potential block                  number=5803 hash=9b114a..4a2c94
+INFO [04-02|22:54:32.578] Commit new mining work                   number=5804 sealhash=895f6f..e451c1 uncles=0 txs=0 gas=0     fees=0          elapsed="118.04µs"
+INFO [04-02|22:54:35.142] Successfully sealed new block            number=5804 sealhash=895f6f..e451c1 hash=20d567..a39e3b elapsed=2.563s
+INFO [04-02|22:54:35.142] 🔗 block reached canonical chain          number=5797 hash=bcb1fe..d05a66
+INFO [04-02|22:54:35.142] 🔨 mined potential block                  number=5804 hash=20d567..a39e3b
+INFO [04-02|22:54:35.142] Commit new mining work                   number=5805 sealhash=53c601..d08cb1 uncles=0 txs=0 gas=0     fees=0          elapsed="290.494µs"
+INFO [04-02|22:54:40.157] Successfully sealed new block            number=5805 sealhash=53c601..d08cb1 hash=9c31ca..a95adc elapsed=5.014s
+INFO [04-02|22:54:40.157] 🔗 block reached canonical chain          number=5798 hash=b69ed4..113d5d
+INFO [04-02|22:54:40.157] 🔨 mined potential block                  number=5805 hash=9c31ca..a95adc
+INFO [04-02|22:54:40.157] Commit new mining work                   number=5806 sealhash=5bd889..f69dcf uncles=0 txs=0 gas=0     fees=0          elapsed="149.008µs"
+INFO [04-02|22:54:42.492] Successfully sealed new block            number=5806 sealhash=5bd889..f69dcf hash=cd6762..bfddff elapsed=2.335s
+INFO [04-02|22:54:42.492] 🔗 block reached canonical chain          number=5799 hash=6a3d75..dd7329
+INFO [04-02|22:54:42.492] 🔨 mined potential block                  number=5806 hash=cd6762..bfddff
+INFO [04-02|22:54:42.492] Commit new mining work                   number=5807 sealhash=97bd86..32c556 uncles=0 txs=0 gas=0     fees=0          elapsed="115.117µs"
+INFO [04-02|22:54:44.514] Successfully sealed new block            number=5807 sealhash=97bd86..32c556 hash=63e536..3e48bb elapsed=2.022s
+INFO [04-02|22:54:44.514] 🔗 block reached canonical chain          number=5800 hash=dc1c80..0d56f3
+INFO [04-02|22:54:44.514] 🔨 mined potential block                  number=5807 hash=63e536..3e48bb
+INFO [04-02|22:54:44.514] Commit new mining work                   number=5808 sealhash=d47e93..a3bef0 uncles=0 txs=0 gas=0     fees=0          elapsed="127.319µs"
+INFO [04-02|22:54:44.856] Successfully sealed new block            number=5808 sealhash=d47e93..a3bef0 hash=c2b387..f38b31 elapsed=341.749ms
+INFO [04-02|22:54:44.856] 🔗 block reached canonical chain          number=5801 hash=e6be8c..de81bf
+INFO [04-02|22:54:44.856] 🔨 mined potential block                  number=5808 hash=c2b387..f38b31
+INFO [04-02|22:54:44.857] Commit new mining work                   number=5809 sealhash=1a366f..c3e23b uncles=0 txs=0 gas=0     fees=0          elapsed="934.212µs"
+INFO [04-02|22:54:46.612] Successfully sealed new block            number=5809 sealhash=1a366f..c3e23b hash=e353e2..8ebbe3 elapsed=1.755s
+INFO [04-02|22:54:46.612] 🔗 block reached canonical chain          number=5802 hash=affd7c..9744b0
+INFO [04-02|22:54:46.612] 🔨 mined potential block                  number=5809 hash=e353e2..8ebbe3
+INFO [04-02|22:54:46.612] Commit new mining work                   number=5810 sealhash=2ac9dd..0869ef uncles=0 txs=0 gas=0     fees=0          elapsed="121.347µs"
+INFO [04-02|22:54:48.557] Successfully sealed new block            number=5810 sealhash=2ac9dd..0869ef hash=1f1c19..2a607a elapsed=1.944s
+INFO [04-02|22:54:48.557] 🔗 block reached canonical chain          number=5803 hash=9b114a..4a2c94
+INFO [04-02|22:54:48.557] 🔨 mined potential block                  number=5810 hash=1f1c19..2a607a
+INFO [04-02|22:54:48.557] Commit new mining work                   number=5811 sealhash=b50afe..493570 uncles=0 txs=0 gas=0     fees=0          elapsed="112.447µs"
+INFO [04-02|22:54:56.654] Successfully sealed new block            number=5811 sealhash=b50afe..493570 hash=7ff308..0a4ca2 elapsed=8.096s
+INFO [04-02|22:54:56.654] 🔗 block reached canonical chain          number=5804 hash=20d567..a39e3b
+INFO [04-02|22:54:56.654] Commit new mining work                   number=5812 sealhash=09c90c..1213a9 uncles=0 txs=0 gas=0     fees=0          elapsed="587.209µs"
+INFO [04-02|22:54:56.654] 🔨 mined potential block                  number=5811 hash=7ff308..0a4ca2
+INFO [04-02|22:55:02.688] Successfully sealed new block            number=5812 sealhash=09c90c..1213a9 hash=ec67b3..fe0535 elapsed=6.034s
+INFO [04-02|22:55:02.689] 🔗 block reached canonical chain          number=5805 hash=9c31ca..a95adc
+INFO [04-02|22:55:02.689] 🔨 mined potential block                  number=5812 hash=ec67b3..fe0535
+INFO [04-02|22:55:02.689] Commit new mining work                   number=5813 sealhash=a75b3c..5dcb89 uncles=0 txs=0 gas=0     fees=0          elapsed="433.376µs"
+INFO [04-02|22:55:05.653] Submitted transaction                    hash=0xc74f2fa4a4435ce179c206cac5db23e9737199264fec953cc447541eee456ffb from=0x0cAA0C75eb072ABf72a61dF0a2Cd84A8d8E078da nonce=57 recipient=0xE131e4136c6f8B193CbEF6552353ba0D9392D522 value=0
+INFO [04-02|22:55:05.708] Commit new mining work                   number=5813 sealhash=ea015f..e9febb uncles=0 txs=1 gas=37999 fees=3.7999e-05 elapsed=6.567ms
+INFO [04-02|22:55:13.710] Successfully sealed new block            number=5813 sealhash=ea015f..e9febb hash=59a4c7..1f9d1d elapsed=8.002s
+INFO [04-02|22:55:13.711] 🔗 block reached canonical chain          number=5806 hash=cd6762..bfddff
+INFO [04-02|22:55:13.711] Commit new mining work                   number=5814 sealhash=f4bf0c..cd631e uncles=0 txs=0 gas=0     fees=0          elapsed="459.834µs"
+INFO [04-02|22:55:13.711] 🔨 mined potential block                  number=5813 hash=59a4c7..1f9d1d
+INFO [04-02|22:55:16.911] Successfully sealed new block            number=5814 sealhash=f4bf0c..cd631e hash=bbf8e3..39d6e8 elapsed=3.200s
+INFO [04-02|22:55:16.911] 🔗 block reached canonical chain          number=5807 hash=63e536..3e48bb
+INFO [04-02|22:55:16.911] 🔨 mined potential block                  number=5814 hash=bbf8e3..39d6e8
+INFO [04-02|22:55:16.911] Commit new mining work                   number=5815 sealhash=3302b5..ed87a8 uncles=0 txs=0 gas=0     fees=0          elapsed="136.358µs"
+INFO [04-02|22:55:17.490] Successfully sealed new block            number=5815 sealhash=3302b5..ed87a8 hash=9412b3..2a2955 elapsed=578.966ms
+INFO [04-02|22:55:17.490] 🔗 block reached canonical chain          number=5808 hash=c2b387..f38b31
+INFO [04-02|22:55:17.490] 🔨 mined potential block                  number=5815 hash=9412b3..2a2955
+INFO [04-02|22:55:17.490] Commit new mining work                   number=5816 sealhash=7cd5e2..7cfb28 uncles=0 txs=0 gas=0     fees=0          elapsed="127.896µs"
+INFO [04-02|22:55:19.833] Successfully sealed new block            number=5816 sealhash=7cd5e2..7cfb28 hash=724970..571ad1 elapsed=2.342s
+INFO [04-02|22:55:19.833] 🔗 block reached canonical chain          number=5809 hash=e353e2..8ebbe3
+INFO [04-02|22:55:19.833] 🔨 mined potential block                  number=5816 hash=724970..571ad1
+INFO [04-02|22:55:19.833] Commit new mining work                   number=5817 sealhash=b5e2c3..8adbd6 uncles=0 txs=0 gas=0     fees=0          elapsed="121.372µs"
+INFO [04-02|22:55:20.129] Successfully sealed new block            number=5817 sealhash=b5e2c3..8adbd6 hash=e09820..bf070d elapsed=296.067ms
+INFO [04-02|22:55:20.130] 🔗 block reached canonical chain          number=5810 hash=1f1c19..2a607a
+INFO [04-02|22:55:20.130] 🔨 mined potential block                  number=5817 hash=e09820..bf070d
+INFO [04-02|22:55:20.130] Commit new mining work                   number=5818 sealhash=d16ddb..9a6f72 uncles=0 txs=0 gas=0     fees=0          elapsed="127.235µs"
+INFO [04-02|22:55:20.634] Successfully sealed new block            number=5818 sealhash=d16ddb..9a6f72 hash=1e63b7..41cb77 elapsed=504.214ms
+INFO [04-02|22:55:20.634] 🔗 block reached canonical chain          number=5811 hash=7ff308..0a4ca2
+INFO [04-02|22:55:20.634] 🔨 mined potential block                  number=5818 hash=1e63b7..41cb77
+INFO [04-02|22:55:20.634] Commit new mining work                   number=5819 sealhash=561db4..5ef657 uncles=0 txs=0 gas=0     fees=0          elapsed="171.641µs"
+INFO [04-02|22:55:22.605] Successfully sealed new block            number=5819 sealhash=561db4..5ef657 hash=9c0b0f..6f06cf elapsed=1.971s
+INFO [04-02|22:55:22.606] 🔗 block reached canonical chain          number=5812 hash=ec67b3..fe0535
+INFO [04-02|22:55:22.606] 🔨 mined potential block                  number=5819 hash=9c0b0f..6f06cf
+INFO [04-02|22:55:22.606] Commit new mining work                   number=5820 sealhash=604c98..b94204 uncles=0 txs=0 gas=0     fees=0          elapsed="116.282µs"
+INFO [04-02|22:55:24.829] Successfully sealed new block            number=5820 sealhash=604c98..b94204 hash=07624a..2aac8c elapsed=2.223s
+INFO [04-02|22:55:24.829] 🔗 block reached canonical chain          number=5813 hash=59a4c7..1f9d1d
+INFO [04-02|22:55:24.830] Commit new mining work                   number=5821 sealhash=4cf06f..5579d9 uncles=0 txs=0 gas=0     fees=0          elapsed="927.852µs"
+INFO [04-02|22:55:24.830] 🔨 mined potential block                  number=5820 hash=07624a..2aac8c
+INFO [04-02|22:55:26.283] Successfully sealed new block            number=5821 sealhash=4cf06f..5579d9 hash=05f412..e47ae3 elapsed=1.453s
+INFO [04-02|22:55:26.283] 🔗 block reached canonical chain          number=5814 hash=bbf8e3..39d6e8
+INFO [04-02|22:55:26.283] 🔨 mined potential block                  number=5821 hash=05f412..e47ae3
+INFO [04-02|22:55:26.283] Commit new mining work                   number=5822 sealhash=1d4894..2aaacc uncles=0 txs=0 gas=0     fees=0          elapsed="118.018µs"
+INFO [04-02|22:55:26.561] Successfully sealed new block            number=5822 sealhash=1d4894..2aaacc hash=3d702a..bae92e elapsed=277.741ms
+INFO [04-02|22:55:26.561] 🔗 block reached canonical chain          number=5815 hash=9412b3..2a2955
+INFO [04-02|22:55:26.561] 🔨 mined potential block                  number=5822 hash=3d702a..bae92e
+INFO [04-02|22:55:26.561] Commit new mining work                   number=5823 sealhash=ebac2b..654e84 uncles=0 txs=0 gas=0     fees=0          elapsed="117.07µs"
+INFO [04-02|22:55:26.781] Successfully sealed new block            number=5823 sealhash=ebac2b..654e84 hash=22f0ea..b1cc6a elapsed=219.515ms
+INFO [04-02|22:55:26.781] 🔗 block reached canonical chain          number=5816 hash=724970..571ad1
+INFO [04-02|22:55:26.781] 🔨 mined potential block                  number=5823 hash=22f0ea..b1cc6a
+INFO [04-02|22:55:26.781] Commit new mining work                   number=5824 sealhash=3cfccb..685f38 uncles=0 txs=0 gas=0     fees=0          elapsed="120.735µs"
+INFO [04-02|22:55:27.088] Successfully sealed new block            number=5824 sealhash=3cfccb..685f38 hash=aacd40..5a9d2b elapsed=307.382ms
+INFO [04-02|22:55:27.088] 🔗 block reached canonical chain          number=5817 hash=e09820..bf070d
+INFO [04-02|22:55:27.088] 🔨 mined potential block                  number=5824 hash=aacd40..5a9d2b
+INFO [04-02|22:55:27.089] Commit new mining work                   number=5825 sealhash=c0f21b..db6f04 uncles=0 txs=0 gas=0     fees=0          elapsed="207.661µs"
+INFO [04-02|22:55:27.673] Successfully sealed new block            number=5825 sealhash=c0f21b..db6f04 hash=d515a0..dd0440 elapsed=584.623ms
+INFO [04-02|22:55:27.673] 🔗 block reached canonical chain          number=5818 hash=1e63b7..41cb77
+INFO [04-02|22:55:27.673] 🔨 mined potential block                  number=5825 hash=d515a0..dd0440
+INFO [04-02|22:55:27.673] Commit new mining work                   number=5826 sealhash=a6b3c1..93b4a0 uncles=0 txs=0 gas=0     fees=0          elapsed="105.887µs"
+INFO [04-02|22:55:28.505] Successfully sealed new block            number=5826 sealhash=a6b3c1..93b4a0 hash=97a9b7..d163e9 elapsed=831.811ms
+INFO [04-02|22:55:28.505] 🔗 block reached canonical chain          number=5819 hash=9c0b0f..6f06cf
+INFO [04-02|22:55:28.505] 🔨 mined potential block                  number=5826 hash=97a9b7..d163e9
+INFO [04-02|22:55:28.505] Commit new mining work                   number=5827 sealhash=680473..522222 uncles=0 txs=0 gas=0     fees=0          elapsed="128.119µs"
+INFO [04-02|22:55:30.015] Successfully sealed new block            number=5827 sealhash=680473..522222 hash=6d952f..05b430 elapsed=1.509s
+INFO [04-02|22:55:30.015] 🔗 block reached canonical chain          number=5820 hash=07624a..2aac8c
+INFO [04-02|22:55:30.015] 🔨 mined potential block                  number=5827 hash=6d952f..05b430
+INFO [04-02|22:55:30.015] Commit new mining work                   number=5828 sealhash=a96fc2..e5e06b uncles=0 txs=0 gas=0     fees=0          elapsed="112.356µs"
+INFO [04-02|22:55:31.151] Successfully sealed new block            number=5828 sealhash=a96fc2..e5e06b hash=93e7e2..e71236 elapsed=1.135s
+INFO [04-02|22:55:31.151] 🔗 block reached canonical chain          number=5821 hash=05f412..e47ae3
+INFO [04-02|22:55:31.151] 🔨 mined potential block                  number=5828 hash=93e7e2..e71236
+INFO [04-02|22:55:31.151] Commit new mining work                   number=5829 sealhash=fecc34..a2dd42 uncles=0 txs=0 gas=0     fees=0          elapsed="153.997µs"
+INFO [04-02|22:55:31.281] Successfully sealed new block            number=5829 sealhash=fecc34..a2dd42 hash=dcdb52..0eeaf4 elapsed=130.185ms
+INFO [04-02|22:55:31.281] 🔗 block reached canonical chain          number=5822 hash=3d702a..bae92e
+INFO [04-02|22:55:31.281] 🔨 mined potential block                  number=5829 hash=dcdb52..0eeaf4
+INFO [04-02|22:55:31.281] Commit new mining work                   number=5830 sealhash=8ebc4f..ddb000 uncles=0 txs=0 gas=0     fees=0          elapsed="131.68µs"
+INFO [04-02|22:55:32.703] Successfully sealed new block            number=5830 sealhash=8ebc4f..ddb000 hash=44ebad..63a9ca elapsed=1.421s
+INFO [04-02|22:55:32.703] 🔗 block reached canonical chain          number=5823 hash=22f0ea..b1cc6a
+INFO [04-02|22:55:32.703] 🔨 mined potential block                  number=5830 hash=44ebad..63a9ca
+INFO [04-02|22:55:32.703] Commit new mining work                   number=5831 sealhash=ab7251..29e087 uncles=0 txs=0 gas=0     fees=0          elapsed="127.08µs"
+INFO [04-02|22:55:36.755] Successfully sealed new block            number=5831 sealhash=ab7251..29e087 hash=cdc28c..59f7c5 elapsed=4.051s
+INFO [04-02|22:55:36.755] 🔗 block reached canonical chain          number=5824 hash=aacd40..5a9d2b
+INFO [04-02|22:55:36.755] Commit new mining work                   number=5832 sealhash=b237fe..5add5c uncles=0 txs=0 gas=0     fees=0          elapsed="358.199µs"
+INFO [04-02|22:55:36.755] 🔨 mined potential block                  number=5831 hash=cdc28c..59f7c5
+INFO [04-02|22:55:40.964] Successfully sealed new block            number=5832 sealhash=b237fe..5add5c hash=9e36a8..9e1dfe elapsed=4.209s
+INFO [04-02|22:55:40.964] 🔗 block reached canonical chain          number=5825 hash=d515a0..dd0440
+INFO [04-02|22:55:40.964] 🔨 mined potential block                  number=5832 hash=9e36a8..9e1dfe
+INFO [04-02|22:55:40.965] Commit new mining work                   number=5833 sealhash=9ec48d..1965f6 uncles=0 txs=0 gas=0     fees=0          elapsed="126.398µs"
+INFO [04-02|22:55:41.553] Successfully sealed new block            number=5833 sealhash=9ec48d..1965f6 hash=4edce5..d18e57 elapsed=588.593ms
+INFO [04-02|22:55:41.553] 🔗 block reached canonical chain          number=5826 hash=97a9b7..d163e9
+INFO [04-02|22:55:41.553] 🔨 mined potential block                  number=5833 hash=4edce5..d18e57
+INFO [04-02|22:55:41.553] Commit new mining work                   number=5834 sealhash=47c2f2..b251c3 uncles=0 txs=0 gas=0     fees=0          elapsed="111.132µs"
+INFO [04-02|22:55:46.238] Successfully sealed new block            number=5834 sealhash=47c2f2..b251c3 hash=a462f2..89afda elapsed=4.684s
+INFO [04-02|22:55:46.238] 🔗 block reached canonical chain          number=5827 hash=6d952f..05b430
+INFO [04-02|22:55:46.238] Commit new mining work                   number=5835 sealhash=3a5bdd..69ad83 uncles=0 txs=0 gas=0     fees=0          elapsed="311.084µs"
+INFO [04-02|22:55:46.238] 🔨 mined potential block                  number=5834 hash=a462f2..89afda
+INFO [04-02|22:55:49.900] Successfully sealed new block            number=5835 sealhash=3a5bdd..69ad83 hash=fd0c5c..b18330 elapsed=3.662s
+INFO [04-02|22:55:49.900] 🔗 block reached canonical chain          number=5828 hash=93e7e2..e71236
+INFO [04-02|22:55:49.900] 🔨 mined potential block                  number=5835 hash=fd0c5c..b18330
+INFO [04-02|22:55:49.900] Commit new mining work                   number=5836 sealhash=005448..24b90a uncles=0 txs=0 gas=0     fees=0          elapsed="159.086µs"
+INFO [04-02|22:55:50.737] Successfully sealed new block            number=5836 sealhash=005448..24b90a hash=6650e7..5543b9 elapsed=836.499ms
+INFO [04-02|22:55:50.737] 🔗 block reached canonical chain          number=5829 hash=dcdb52..0eeaf4
+INFO [04-02|22:55:50.737] 🔨 mined potential block                  number=5836 hash=6650e7..5543b9
+INFO [04-02|22:55:50.737] Commit new mining work                   number=5837 sealhash=f63f2b..7e9201 uncles=0 txs=0 gas=0     fees=0          elapsed="114.963µs"
+INFO [04-02|22:55:50.819] Successfully sealed new block            number=5837 sealhash=f63f2b..7e9201 hash=d01228..49cb39 elapsed=82.161ms
+INFO [04-02|22:55:50.819] 🔗 block reached canonical chain          number=5830 hash=44ebad..63a9ca
+INFO [04-02|22:55:50.819] 🔨 mined potential block                  number=5837 hash=d01228..49cb39
+INFO [04-02|22:55:50.819] Commit new mining work                   number=5838 sealhash=93e5f5..492729 uncles=0 txs=0 gas=0     fees=0          elapsed="123.231µs"
+INFO [04-02|22:55:52.832] Successfully sealed new block            number=5838 sealhash=93e5f5..492729 hash=37b794..f7e5f4 elapsed=2.012s
+INFO [04-02|22:55:52.832] 🔗 block reached canonical chain          number=5831 hash=cdc28c..59f7c5
+INFO [04-02|22:55:52.832] 🔨 mined potential block                  number=5838 hash=37b794..f7e5f4
+INFO [04-02|22:55:52.832] Commit new mining work                   number=5839 sealhash=d4c476..e78039 uncles=0 txs=0 gas=0     fees=0          elapsed="125.21µs"
+INFO [04-02|22:55:55.233] Successfully sealed new block            number=5839 sealhash=d4c476..e78039 hash=9a125f..ea5fa3 elapsed=2.400s
+INFO [04-02|22:55:55.233] 🔗 block reached canonical chain          number=5832 hash=9e36a8..9e1dfe
+INFO [04-02|22:55:55.233] 🔨 mined potential block                  number=5839 hash=9a125f..ea5fa3
+INFO [04-02|22:55:55.233] Commit new mining work                   number=5840 sealhash=d1fb11..f35ba1 uncles=0 txs=0 gas=0     fees=0          elapsed="204.177µs"
+INFO [04-02|22:55:57.717] Successfully sealed new block            number=5840 sealhash=d1fb11..f35ba1 hash=066c53..041ee7 elapsed=2.484s
+INFO [04-02|22:55:57.717] 🔗 block reached canonical chain          number=5833 hash=4edce5..d18e57
+INFO [04-02|22:55:57.717] 🔨 mined potential block                  number=5840 hash=066c53..041ee7
+INFO [04-02|22:55:57.717] Commit new mining work                   number=5841 sealhash=9958eb..8ac070 uncles=0 txs=0 gas=0     fees=0          elapsed="115.444µs"
+INFO [04-02|22:55:58.088] Successfully sealed new block            number=5841 sealhash=9958eb..8ac070 hash=fc59db..3cad08 elapsed=370.059ms
+INFO [04-02|22:55:58.088] 🔗 block reached canonical chain          number=5834 hash=a462f2..89afda
+INFO [04-02|22:55:58.088] 🔨 mined potential block                  number=5841 hash=fc59db..3cad08
+INFO [04-02|22:55:58.088] Commit new mining work                   number=5842 sealhash=58db36..38b0c9 uncles=0 txs=0 gas=0     fees=0          elapsed="171.747µs"
+INFO [04-02|22:56:01.614] Successfully sealed new block            number=5842 sealhash=58db36..38b0c9 hash=b7bd90..33c4e9 elapsed=3.525s
+INFO [04-02|22:56:01.614] 🔗 block reached canonical chain          number=5835 hash=fd0c5c..b18330
+INFO [04-02|22:56:01.614] 🔨 mined potential block                  number=5842 hash=b7bd90..33c4e9
+INFO [04-02|22:56:01.614] Commit new mining work                   number=5843 sealhash=6355c2..398883 uncles=0 txs=0 gas=0     fees=0          elapsed="116.097µs"
+INFO [04-02|22:56:03.262] Successfully sealed new block            number=5843 sealhash=6355c2..398883 hash=86688a..8ae0a1 elapsed=1.648s
+INFO [04-02|22:56:03.262] 🔗 block reached canonical chain          number=5836 hash=6650e7..5543b9
+INFO [04-02|22:56:03.262] 🔨 mined potential block                  number=5843 hash=86688a..8ae0a1
+INFO [04-02|22:56:03.262] Commit new mining work                   number=5844 sealhash=a90366..1ef92d uncles=0 txs=0 gas=0     fees=0          elapsed="150.364µs"
+INFO [04-02|22:56:05.041] Successfully sealed new block            number=5844 sealhash=a90366..1ef92d hash=ac0757..d420ed elapsed=1.781s
+INFO [04-02|22:56:05.042] 🔗 block reached canonical chain          number=5837 hash=d01228..49cb39
+INFO [04-02|22:56:05.042] 🔨 mined potential block                  number=5844 hash=ac0757..d420ed
+INFO [04-02|22:56:05.042] Commit new mining work                   number=5845 sealhash=71fd5e..6f1041 uncles=0 txs=0 gas=0     fees=0          elapsed="168.972µs"
+INFO [04-02|22:56:05.490] Successfully sealed new block            number=5845 sealhash=71fd5e..6f1041 hash=138614..fa0856 elapsed=449.042ms
+INFO [04-02|22:56:05.490] 🔗 block reached canonical chain          number=5838 hash=37b794..f7e5f4
+INFO [04-02|22:56:05.490] 🔨 mined potential block                  number=5845 hash=138614..fa0856
+INFO [04-02|22:56:05.490] Commit new mining work                   number=5846 sealhash=357e80..356561 uncles=0 txs=0 gas=0     fees=0          elapsed="119.058µs"
+INFO [04-02|22:56:08.242] HTTP server stopped                      endpoint=127.0.0.1:8543
+INFO [04-02|22:56:08.242] IPC endpoint closed                      url=/Users/ishaangulati/Desktop/blockchain/BlockHeads/root/blkchain/geth.ipc
+INFO [04-02|22:56:08.243] Ethereum protocol stopped 
+INFO [04-02|22:56:08.243] Transaction pool stopped 
+INFO [04-02|22:56:08.244] Writing cached state to disk             block=5845 hash=138614..fa0856 root=0d19f2..c4bfe2
+INFO [04-02|22:56:08.245] Persisted trie from memory database      nodes=23 size=2.81KiB time="803.937µs" gcnodes=0 gcsize=0.00B gctime=0s livenodes=345 livesize=58.62KiB
+INFO [04-02|22:56:08.245] Writing cached state to disk             block=5844 hash=ac0757..d420ed root=ae47b9..205cb7
+INFO [04-02|22:56:08.245] Persisted trie from memory database      nodes=4  size=702.00B time="59.695µs"  gcnodes=0 gcsize=0.00B gctime=0s livenodes=341 livesize=57.94KiB
+INFO [04-02|22:56:08.245] Writing cached state to disk             block=5718 hash=b67913..aef3e9 root=11bb4c..7705ac
+INFO [04-02|22:56:08.245] Persisted trie from memory database      nodes=0  size=0.00B   time="1.741µs"   gcnodes=0 gcsize=0.00B gctime=0s livenodes=341 livesize=57.94KiB
+INFO [04-02|22:56:08.245] Writing snapshot state to disk           root=c4545d..03b41b
+INFO [04-02|22:56:08.245] Persisted trie from memory database      nodes=0  size=0.00B   time=996ns       gcnodes=0 gcsize=0.00B gctime=0s livenodes=341 livesize=57.94KiB
+INFO [04-02|22:56:08.246] Writing clean trie cache to disk         path=/Users/ishaangulati/Desktop/blockchain/BlockHeads/root/blkchain/geth/triecache threads=12
+INFO [04-02|22:56:08.260] Persisted the clean trie cache           path=/Users/ishaangulati/Desktop/blockchain/BlockHeads/root/blkchain/geth/triecache elapsed=14.259ms
+INFO [04-02|22:56:08.260] Blockchain stopped 

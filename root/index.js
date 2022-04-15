@@ -4,7 +4,7 @@ const Web3 = require('web3');
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { interactWithContract: minter, getBalances } = require('./deploy.js');
+const { interactWithContract: minter, getBalances } = require('./simulation.js');
 
 const app = express();
 

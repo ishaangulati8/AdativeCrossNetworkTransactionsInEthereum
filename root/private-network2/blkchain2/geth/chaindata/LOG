@@ -1,0 +1,30 @@
+=============== Apr 15, 2022 (EDT) ===============
+16:24:51.839084 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+16:24:51.900050 db@open opening
+16:24:51.904142 version@stat F·[] S·0B[] Sc·[]
+16:24:51.923727 db@janitor F·2 G·0
+16:24:51.924048 db@open done T·23.9657ms
+16:24:51.933743 db@close closing
+16:24:51.933897 db@close done T·152.31µs
+=============== Apr 15, 2022 (EDT) ===============
+16:31:10.496965 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+16:31:10.498542 version@stat F·[] S·0B[] Sc·[]
+16:31:10.498615 db@open opening
+16:31:10.498756 journal@recovery F·1
+16:31:10.503096 journal@recovery recovering @1
+16:31:10.523329 memdb@flush created L0@2 N·35 S·2KiB "\t\xa1^..\x8f\xc2j,v18":"\xe8\x90u..ľW,v17"
+16:31:10.527308 version@stat F·[1] S·2KiB[2KiB] Sc·[0.25]
+16:31:10.609815 db@janitor F·3 G·0
+16:31:10.609893 db@open done T·111.261623ms
+16:34:47.558709 db@close closing
+16:34:47.559139 db@close done T·428.86µs
+=============== Apr 15, 2022 (EDT) ===============
+17:03:47.951712 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+17:03:47.954166 version@stat F·[1] S·2KiB[2KiB] Sc·[0.25]
+17:03:47.954250 db@open opening
+17:03:47.954431 journal@recovery F·1
+17:03:47.958365 journal@recovery recovering @3
+17:03:47.978249 memdb@flush created L0@5 N·20 S·838B "Dat..ion,v37":"unc..own,v53"
+17:03:47.980701 version@stat F·[2] S·3KiB[3KiB] Sc·[0.50]
+17:03:48.066463 db@janitor F·4 G·0
+17:03:48.066608 db@open done T·112.340449ms

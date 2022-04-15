@@ -1,6 +1,6 @@
 {
     "config": {
-        "chainId": 145,
+        "chainId": 144,
         "homesteadBlock": 0,
         "eip150Block": 0,
         "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
@@ -10,34 +10,34 @@
         "constantinopleBlock": 0
     },
     "alloc": {
-        "0x288c2E0FEaD9B374de9c6D06f685Fe5Af02af9a2": { 
+        "0x0cAA0C75eb072ABf72a61dF0a2Cd84A8d8E078da": { 
         "balance": "100000000000000000000000" 
         },
-        "0xA76dF879718C97c39b7AE1C478E2AB7040508883": { 
+        "0xd9437084aaA20716C43B8dA138591b5aC7acF9A6": { 
         "balance": "100000000000000000000000" 
         },
-        "0xdA3DA609Fa1821A5b6EB38b744d87E6Bd2EC69f8": { 
+        "0x3af25D87fE2422CeD6a2bbbbeDf27825983235A2": { 
         "balance": "100000000000000000000000" 
         },
-        "0xFC4f732e264056C0e67fF4628bB659BFe54D86d1": { 
+        "0x3b3efc0dDd12845B1F310E746be522440F2E00D0": { 
         "balance": "100000000000000000000000" 
         },
-        "0x645eaE8Cf8DC770e5BD0CA196EA0eB02A85005CF": { 
+        "0x45Bf2462d250A614bB28b391215004EeD2a7b99E": { 
         "balance": "100000000000000000000000" 
         },
-        "0xDf8d57889843AFcDe4e5b786F3a8Ba00026Baaba": { 
+        "0xBedbba51B64ec575e28156c16980211B88d12b49": { 
         "balance": "100000000000000000000000" 
         },
-        "0x146e5aD6671D8cED3e25d91D298425cF9EC021b3": { 
+        "0x51f47a0B2A62433828BD256A40b408df9CC75782": { 
         "balance": "100000000000000000000000" 
         },
-        "0xd0bF06efDa59c96Fb50C24639c52D6F727620769": { 
+        "0x1e02F1624962c1777324D51382436Bc969537F29": { 
             "balance": "100000000000000000000000" 
             },
-        "0xaf3C523370A13444e469218641705f8cA90B4823": { 
+        "0xD316b5e627F2BeB8c95e7Ed786AFDe75a3a90bba": { 
         "balance": "100000000000000000000000" 
         },
-        "0x77cdA257eFCf749a7f9dC9657048Db7E88BbC94A": { 
+        "0xaaD5e06B60D5B9210a02C3001F784dD2d20Cd252": { 
         "balance": "100000000000000000000000" 
         }
     },
