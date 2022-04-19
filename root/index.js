@@ -4,7 +4,7 @@ const Web3 = require('web3');
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { interactWithContract: minter, getBalances, makeRandomTransactions } = require('./simulation.js');
+const { interactWithContract: minter, getBalances, makeRandomTransactions, mint } = require('./simulation.js');
 
 const app = express();
 
@@ -13,14 +13,21 @@ app.use(bodyParser.json());
 
 let web3;
 const PORT = process.env.PORT || 3001;
-const IPC_URL = process.env.IPC_URL || 'http://127.0.0.1:8543';
+const IPC_URL = process.env.IPC_URL || 'http://127.0.0.1:8544';
 
-app.listen(PORT, (err) => {
-    if (err) {
-        console.err(err);
-    } else {
-        web3 = new Web3(new Web3.providers.HttpProvider(IPC_URL));
-        console.log('Server started successfully on port: ', PORT);
+app.listen(PORT, async(err) => { 
+    try {
+        if (err) {
+            console.err(err);
+            process.exit(1);
+        } else {
+            web3 = new Web3(new Web3.providers.HttpProvider(IPC_URL));
+            await mint(web3)
+            console.log('Server started successfully on port: ', PORT);
+        }
+    } catch (error) {
+        console.error(error);
+        process.exit(1);
     }
 });
 

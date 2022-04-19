@@ -7,13 +7,13 @@ function compileContract() {
     try {
         const OS = process.platform;
         // TODO: Add relative path for windows OS.
-        const CONTRACT_PATH = OS === 'darvin' ? './truffle/contracts/Mint.sol' : 'C:\Users\Neha Surana\blockheads\root\truffle\contracts\Mint.sol'
+        const CONTRACT_PATH = OS === 'darvin' ? './private-network1/truffle/contracts/Coin.sol' : 'C:\Users\Neha Surana\blockheads\root\truffle\contracts\Coin.sol'
         const contractPath = path.resolve(__dirname, CONTRACT_PATH);
         const source = fs.readFileSync(contractPath, 'utf8');
         const input = {
             language: 'Solidity',
             sources: {
-                'Mint.sol': {
+                'Coin.sol': {
                     content: source,
                 },
             },

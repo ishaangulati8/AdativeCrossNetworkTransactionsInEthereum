@@ -18,8 +18,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -32,8 +31,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -52,8 +50,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.12+commit.f00d7308\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"balances\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"getBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"minter\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Coin.sol\":\"Coin\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Coin.sol\":{\"keccak256\":\"0x0ec3344e43197c57f75b5fa720d6345684f5eb6cc3c13ac0d12487a3966b8ae3\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://4d483a7155be4941c3d359f6699eef296ca45e7a1ee535059ef91071bd8b9e6d\",\"dweb:/ipfs/QmNmr9Y3AaLosizaBrCUVQzTCbrB9LqexcWzZ5HqZM2T9q\"]}},\"version\":1}",
@@ -1056,7 +1053,7 @@
   "sourceMap": "61:278:0:-:0;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "61:278:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;164:21;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;191:41;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;239:98;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;164:21;;;;;;;;;;;;:::o;191:41::-;;;;;;;;;;;;;;;;;:::o;239:98::-;293:4;316:8;:14;325:4;316:14;;;;;;;;;;;;;;;;309:21;;239:98;;;:::o;7:126:3:-;44:7;84:42;77:5;73:54;62:65;;7:126;;;:::o;139:96::-;176:7;205:24;223:5;205:24;:::i;:::-;194:35;;139:96;;;:::o;241:118::-;328:24;346:5;328:24;:::i;:::-;323:3;316:37;241:118;;:::o;365:222::-;458:4;496:2;485:9;481:18;473:26;;509:71;577:1;566:9;562:17;553:6;509:71;:::i;:::-;365:222;;;;:::o;674:117::-;783:1;780;773:12;920:122;993:24;1011:5;993:24;:::i;:::-;986:5;983:35;973:63;;1032:1;1029;1022:12;973:63;920:122;:::o;1048:139::-;1094:5;1132:6;1119:20;1110:29;;1148:33;1175:5;1148:33;:::i;:::-;1048:139;;;;:::o;1193:329::-;1252:6;1301:2;1289:9;1280:7;1276:23;1272:32;1269:119;;;1307:79;;:::i;:::-;1269:119;1427:1;1452:53;1497:7;1488:6;1477:9;1473:22;1452:53;:::i;:::-;1442:63;;1398:117;1193:329;;;;:::o;1528:77::-;1565:7;1594:5;1583:16;;1528:77;;;:::o;1611:118::-;1698:24;1716:5;1698:24;:::i;:::-;1693:3;1686:37;1611:118;;:::o;1735:222::-;1828:4;1866:2;1855:9;1851:18;1843:26;;1879:71;1947:1;1936:9;1932:17;1923:6;1879:71;:::i;:::-;1735:222;;;;:::o",
   "source": "// SPDX-License-Identifier: GPL-3.0\npragma solidity ^0.8.4;\n\ncontract Coin {\n    // The keyword \"public\" makes variables\n    // accessible from other contracts\n    address public minter;\n    mapping (address => uint) public balances;\n\n    function getBalance(address addr) public view returns(uint) {\n        return balances[addr];\n    }\n}",
-  "sourcePath": "/Users/ishaangulati/Desktop/blockchain/BlockHeads/root/truffle/contracts/Coin.sol",
+  "sourcePath": "/Users/ishaangulati/Desktop/blockchain/BlockHeads/root/private-network1/truffle/contracts/Coin.sol",
   "ast": {
     "absolutePath": "project:/contracts/Coin.sol",
     "exportedSymbols": {
@@ -1580,8 +1577,7 @@
     }
   },
   "schemaVersion": "3.4.6",
-  "updatedAt": "2022-04-02T23:41:53.865Z",
-  "networkType": "ethereum",
+  "updatedAt": "2022-04-19T01:21:38.762Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

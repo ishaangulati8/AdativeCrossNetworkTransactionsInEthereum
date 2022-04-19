@@ -134,6 +134,12 @@ async function interactWithContract(web3) {
 }
 
 
+async function mint(web3) {
+    const contract = getContract();
+    // const accounts = await getAccounts()
+    await contract.methods.mint().call();
+}
+
 
 
 
@@ -149,4 +155,4 @@ async function getBalances(web3) {
         throw new Error(error);
     }
 }
-module.exports = { interactWithContract, getBalances, makeRandomTransactions };
+module.exports = { interactWithContract, getBalances, makeRandomTransactions, mint };
