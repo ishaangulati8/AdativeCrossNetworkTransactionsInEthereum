@@ -28,3 +28,6 @@
 17:03:47.980701 version@stat F·[2] S·3KiB[3KiB] Sc·[0.50]
 17:03:48.066463 db@janitor F·4 G·0
 17:03:48.066608 db@open done T·112.340449ms
+=============== Apr 18, 2022 (EDT) ===============
+21:06:32.104172 db@close closing
+21:06:32.107404 db@close done T·3.496623ms

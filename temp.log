@@ -1,0 +1,15 @@
+INFO [04-02|22:53:39.746] Submitted transaction                    hash=0x6273eb38310dbe77d65d9bf33dbdc0ac94e6807b233a95dee736cfb9b3debb32 from=0x0cAA0C75eb072ABf72a61dF0a2Cd84A8d8E078da nonce=55 recipient=0xE131e4136c6f8B193CbEF6552353ba0D9392D522 value=0
+INFO [04-02|22:53:39.906] Successfully sealed new block            number=5786 sealhash=11b49e..086997 hash=8565d8..57f3a8 elapsed=932.836ms
+INFO [04-02|22:53:39.906] 🔗 block reached canonical chain          number=5779 hash=74bc27..54e82d
+INFO [04-02|22:53:39.906] 🔨 mined potential block                  number=5786 hash=8565d8..57f3a8
+INFO [04-02|22:53:39.906] Commit new mining work                   number=5787 sealhash=b96e81..4efe7d uncles=0 txs=0 gas=0 fees=0 elapsed="166.978µs"
+INFO [04-02|22:53:57.277] Submitted transaction                    hash=0x3a05421b55cf6279b26159afd3e856c5da1b9e7152b96fc8083126cbb3ad461e from=0x0cAA0C75eb072ABf72a61dF0a2Cd84A8d8E078da nonce=56 recipient=0xE131e4136c6f8B193CbEF6552353ba0D9392D522 value=0
+INFO [04-02|22:53:59.602] Commit new mining work                   number=5792 sealhash=3fb979..e5a256 uncles=0 txs=1 gas=36621 fees=3.6621e-05 elapsed=11.280ms
+INFO [04-02|22:54:04.188] Successfully sealed new block            number=5792 sealhash=3fb979..e5a256 hash=39c767..12017d elapsed=4.585s
+INFO [04-02|22:54:04.188] 🔗 block reached canonical chain          number=5785 hash=75d76c..107a74
+INFO [04-02|22:54:04.188] 🔨 mined potential block                  number=5792 hash=39c767..12017d
+INFO [04-02|22:54:04.189] Commit new mining work                   number=5793 sealhash=4c890e..ab9002 uncles=0 txs=0 gas=0     fees=0          elapsed="190.751µs"
+INFO [04-02|22:55:05.653] Submitted transaction                    hash=0xc74f2fa4a4435ce179c206cac5db23e9737199264fec953cc447541eee456ffb from=0x0cAA0C75eb072ABf72a61dF0a2Cd84A8d8E078da nonce=57 recipient=0xE131e4136c6f8B193CbEF6552353ba0D9392D522 value=0
+INFO [04-02|22:55:05.708] Commit new mining work                   number=5813 sealhash=ea015f..e9febb uncles=0 txs=1 gas=37999 fees=3.7999e-05 elapsed=6.567ms
+INFO [04-02|22:55:13.710] Successfully sealed new block            number=5813 sealhash=ea015f..e9febb hash=59a4c7..1f9d1d elapsed=8.002s
+INFO [04-02|22:55:13.711] 🔗 block reached canonical chain          number=5806 hash=cd6762..bfddff

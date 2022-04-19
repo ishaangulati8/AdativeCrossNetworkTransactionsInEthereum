@@ -1,4 +1,6 @@
 const getContractFile = require('./compileContract');
+const sab = new SharedArrayBuffer(1024)
+const locks = new Int32Array(sab);
 
 const sleep = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
@@ -22,9 +24,15 @@ function getContract(web3, contractAddress) {
     return minter;
 }
 
+
 async function getAccounts(web3) {
     const accounts = await web3.eth.getAccounts();
-    return accounts.map((account) => {locked: false, account});
+    // populate buffer
+
+    for (let i = 0; i < accounts.length; i++) {
+        Atomics.store(locks, i, 0);
+    }
+    return accounts;
 }
 
 function getRandomNumbers(range) {
@@ -56,22 +64,46 @@ async function makeRandomTransactions(web3, smartContractsAddress) {
             throw new Error("Please add more accounts to continue.");
         }
         await unlockAccounts(web3, accounts);
-        const [account1, account2] = getRandomNumbers(accounts.length - 1);
-        const transaction = await contract.methods.makeTransaction(accounts[account1], accounts[account2], getRandomAmount()).send({ from: accounts[0] },
-            async (error, transactionHash) => {
-                let transactionReceipt = null;
-                while (transactionReceipt == null) {
-                    transactionReceipt = await web3.eth.getTransactionReceipt(transactionHash);
-                    await sleep(1000)
-                }
-                return transactionReceipt;
-            });
+        const transactions = [];
+        for (let i = 0; i < 20; i++) {
+            transactions.push(makeTransactions(contract, accounts, getRandomNumbers(accounts.length - 1)));
+        }
+        await Promise.all(transactions);
     } catch (error) {
         console.error(error);
         throw new Error(error);
     }
 }
 
+async function makeTransactions(contract, accounts, accountIndexes) {
+    const [first, second] = accountIndexes;
+    // TODO: Test if it works.
+    while (Atomics.wait(locks, first, 1) && Atomics.wait(locks, second, 1)) {
+        // do nothing wait for accounts to unlock.
+    }
+    // Lock the accounts
+    Atomics.store(buffer, first, 1);
+    Atomics.store(buffer, second, 1);
+    // perform transaction
+    const transaction = await contract.methods.makeTransaction(accounts[first], accounts[second], getRandomAmount()).send({ from: accounts[0] },
+        async (error, transactionHash) => {
+            let transactionReceipt = null;
+            while (transactionReceipt == null) {
+                transactionReceipt = await web3.eth.getTransactionReceipt(transactionHash);
+                await sleep(1000)
+            }
+            return transactionReceipt;
+        });
+    // Unlock the accounts.
+    Atomics.store(buffer, first, 0);
+    Atomics.store(buffer, second, 0);
+    Atomics.notify(buffer, first);
+    Atomics.notify(buffer, second);
+    return transaction;
+}
+
+
+// TODO: Remove
 async function interactWithContract(web3) {
     try {
         const contractFile = getContractFile();
@@ -102,14 +134,7 @@ async function interactWithContract(web3) {
 }
 
 
-async function makeTransactions(contract, accounts, accountIndexes) {
-    const [first, second ] = accountIndexes;
-    while(accounts[first].locked == true || accounts[second].locked == true) {
-        // wait do nothing
-    }
-    
-    // perform transaction.
-}
+
 
 
 async function getBalances(web3) {

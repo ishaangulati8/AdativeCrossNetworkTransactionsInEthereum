@@ -4,7 +4,7 @@ const Web3 = require('web3');
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { interactWithContract: minter, getBalances } = require('./simulation.js');
+const { interactWithContract: minter, getBalances, makeRandomTransactions } = require('./simulation.js');
 
 const app = express();
 
@@ -26,7 +26,9 @@ app.listen(PORT, (err) => {
 
 app.use('/random-transaction', async (req, res, next) => {
     try {
-        const balances = await minter(web3);
+        // const balances = await minter(web3);
+        const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS || '0xE131e4136c6f8B193CbEF6552353ba0D9392D522'
+        makeRandomTransactions(web3, CONTRACT_ADDRESS);
         res.status(200).json({
             success: true,
             balances,
