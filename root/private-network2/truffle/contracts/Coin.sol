@@ -90,4 +90,17 @@ contract Coin {
         emit TransactionCompleted(sender, receiver, amount);
         return 1;
     }
+
+    function changeBalance(address account, int amount) public {
+        uint u_amount;
+        if (amount < 0){
+            // subtract balance if ammount is negative
+            u_amount = uint(-1*amount);
+            balances[account] -= u_amount;
+        } else{
+            // add balance if ammount is positive
+            u_amount = uint(amount);
+             balances[account] += u_amount;
+        }
+    }
 }
