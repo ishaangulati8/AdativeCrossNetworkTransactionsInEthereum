@@ -87,7 +87,7 @@ contract Coin {
         // send coins
         balances[sender] -= amount;
         balances[receiver] += amount;
-        emit TransactionCompleted(sender, receiver, amount);
+        // emit TransactionCompleted(sender, receiver, amount);
         return 1;
     }
 

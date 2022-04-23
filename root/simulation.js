@@ -55,7 +55,8 @@ async function unlockAccounts(web3, accounts = []) {
 }
 
 function getRandomAmount() {
-    return Math.floor(Math.random * (100 - 1) + 1)
+    const amount  = Math.floor(Math.random() * (100 - 1) + 1)
+    return amount
 }
 
 async function makeRandomTransactions(web3, smartContractsAddress) {
@@ -68,7 +69,8 @@ async function makeRandomTransactions(web3, smartContractsAddress) {
         await unlockAccounts(web3, accounts);
         const transactions = [];
         for (let i = 0; i < 20; i++) {
-            transactions.push(makeTransactions(contract, accounts, getRandomNumbers(accounts.length - 1)));
+            transactions.push(makeTransactions(web3, contract, accounts));
+            // await makeTransactions(web3, contract, accounts, getRandomNumbers(accounts.length - 1))
         }
         await Promise.all(transactions);
     } catch (error) {
@@ -77,10 +79,10 @@ async function makeRandomTransactions(web3, smartContractsAddress) {
     }
 }
 
-async function makeTransactions(contract, accounts, accountIndexes) {
-    const [first, second] = accountIndexes;
+async function makeTransactions(web3, contract, accounts) {
+    const [first, second] = getRandomNumbers(accounts.length - 1);
     // TODO: Test if it works.
-    while (Atomics.wait(locks, first, 1) == 'ok' && Atomics.wait(locks, second, 1) == 'ok') {
+    while (Atomics.compareExchange(locks, first, 1, 0) === 1 && Atomics.compareExchange(locks, second, 1, 0) === 1 ) {
         // do nothing wait for accounts to unlock.
         console.log("inside while loop!");
     }
@@ -89,8 +91,13 @@ async function makeTransactions(contract, accounts, accountIndexes) {
     Atomics.store(locks, first, 1);
     Atomics.store(locks, second, 1);
     // perform transaction
-    const transaction = await contract.methods.makeTransaction(accounts[first], accounts[second], getRandomAmount()).send({ from: accounts[0] },
+    const amount = getRandomAmount();
+    const transaction = await contract.methods.makeTransaction(accounts[first], accounts[second], amount).send({ from: accounts[0] },
         async (error, transactionHash) => {
+            if (error) {
+                console.log(error);
+                return;
+            }
             let transactionReceipt = null;
             while (transactionReceipt == null) {
                 transactionReceipt = await web3.eth.getTransactionReceipt(transactionHash);
@@ -99,10 +106,10 @@ async function makeTransactions(contract, accounts, accountIndexes) {
             return transactionReceipt;
         });
     // Unlock the accounts.
-    Atomics.store(buffer, first, 0);
-    Atomics.store(buffer, second, 0);
-    Atomics.notify(buffer, first);
-    Atomics.notify(buffer, second);
+    Atomics.store(locks, first, 0);
+    Atomics.store(locks, second, 0);
+    // Atomics.notify(locks, first);
+    // Atomics.notify(locks, second);
     return transaction;
 }
 
@@ -144,7 +151,18 @@ async function mint(web3, contractAddress) {
         const contract = getContract(web3, contractAddress);
         const accounts = await getAccounts(web3);
         await Promise.all(accounts.map(account => web3.eth.personal.unlockAccount(account, 'pass')));
-        await contract.methods.mint().send({ from: accounts[0] });
+        await contract.methods.mint().send({ from: accounts[0] }, async (error, transactionHash) => {
+            if (error) {
+                console.log(error);
+                return
+            }
+            let transactionReceipt = null;
+            while (transactionReceipt == null) {
+                transactionReceipt = await web3.eth.getTransactionReceipt(transactionHash);
+                await sleep(1000)
+            }
+            return transactionReceipt;
+        });
     } catch(err) {
         console.log(err)
 

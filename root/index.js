@@ -22,7 +22,7 @@ app.listen(PORT, async(err) => {
             process.exit(1);
         } else {
             web3 = new Web3(new Web3.providers.HttpProvider(IPC_URL));
-            const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS || '0xE131e4136c6f8B193CbEF6552353ba0D9392D522'
+            const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS || '0x20C319d05fDB8Ae786053E7cdc734324D9804e36'
             await mint(web3, CONTRACT_ADDRESS)
             console.log('Server started successfully on port: ', PORT);
         }
@@ -34,9 +34,9 @@ app.listen(PORT, async(err) => {
 
 app.use('/random-transaction', async (req, res, next) => {
     try {
-        // const balances = await minter(web3);
-        const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS || '0xE131e4136c6f8B193CbEF6552353ba0D9392D522'
+        const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS || '0x20C319d05fDB8Ae786053E7cdc734324D9804e36'
         await makeRandomTransactions(web3, CONTRACT_ADDRESS);
+        const balances = await getBalances(web3);
         res.status(200).json({
             success: true,
             balances,
