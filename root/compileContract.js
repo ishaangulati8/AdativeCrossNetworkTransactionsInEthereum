@@ -3,11 +3,11 @@ const fs = require('fs');
 const solc = require('solc');
 
 
-function compileContract() {
+function compileContract(contractFilePath) {
     try {
         const OS = process.platform;
         // TODO: Add relative path for windows OS.
-        const CONTRACT_PATH = OS === 'darwin' ? './private-network1/truffle/contracts/Coin.sol' : 'C:\Users\Neha Surana\blockheads\root\truffle\contracts\Coin.sol';
+        const CONTRACT_PATH = contractFilePath;
         const contractPath = path.resolve(__dirname, CONTRACT_PATH);
         const source = fs.readFileSync(contractPath, 'utf8');
         const input = {
