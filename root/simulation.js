@@ -56,8 +56,8 @@ async function makeRandomSyncTransactions({
     chain1ContractFilePath, chain2ContractAddress,
     chain2ContractFilePath }) {
     try {
-        const chain1Contract = getContract(chain1Web3, chain1ContractFilePath);
-        const chain2Contract = getContract(chain2Web3, chain2ContractAddress);
+        const chain1Contract = getContract(chain1Web3, chain1ContractAddress, chain1ContractFilePath);
+        const chain2Contract = getContract(chain2Web3, chain2ContractAddress, chain2ContractFilePath);
         const chain1Accounts = await getAccounts(chain1Web3, chain1Locks);
         const chain2Accounts = await getAccounts(chain2Web3, chain2Locks);
         if (accounts.length == 0 || accounts.length == 1) {
@@ -231,5 +231,8 @@ async function getBalances(web3, contractFilePath) {
         throw new Error(error);
     }
 }
+
+
+async function makeRadomAsyncTransaction
 
 module.exports = { getBalances, makeRandomSyncTransactions, mint, sleep };
