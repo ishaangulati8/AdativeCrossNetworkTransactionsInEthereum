@@ -12,7 +12,7 @@ contract CrossNetworkTransaction {
     struct Transaction { 
         address account;
         int amount;
-        int t_id;
+        string t_id;
     }
 
     Transaction[25] undo_log;
@@ -68,7 +68,7 @@ contract CrossNetworkTransaction {
 
 
     // asynchronous functions
-    function log(address account, int amount, int t_id) public {
+    function log(address account, int amount, string memory t_id) public {
         Transaction memory transaction = Transaction(account, amount, t_id);
         for (uint i = undo_log.length; i > 0; i--){
             undo_log[i] = undo_log[i-1];
@@ -77,7 +77,7 @@ contract CrossNetworkTransaction {
 
     }
 
-    function commitAsynDebit(address account, uint amount, int t_id)  public returns(int){
+    function commitAsynDebit(address account, uint amount, string memory t_id)  public returns(int){
         // account is sending coins. balance verification required
         if (_coin.getBalance(account) < amount){
             // insufficient balance for transaction
@@ -93,7 +93,7 @@ contract CrossNetworkTransaction {
         _coin.deductBalance(account, amount);
     }
 
-    function commitAsynCredit(address account, uint amount, int t_id)  public returns(int){
+    function commitAsynCredit(address account, uint amount, string memory t_id)  public returns(int){
         
         // log transaction in undo log
         int delta_amount = int(amount);
