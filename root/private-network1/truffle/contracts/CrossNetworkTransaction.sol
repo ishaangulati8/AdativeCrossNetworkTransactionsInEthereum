@@ -8,14 +8,8 @@ contract CrossNetworkTransaction {
     // state variable for synchronous protocol
     mapping (address => int) public pending_transactions; 
 
-    //state variables for asynchronous protocol
-    struct Transaction { 
-        address account;
-        int amount;
-        int t_id;
-    }
-
-    Transaction[25] undo_log;
+    // state variable for asynchronous protocol
+    mapping (address => int) public undo_log; 
     
     // contract address
     Coin _coin = Coin(0x20C319d05fDB8Ae786053E7cdc734324D9804e36);
@@ -67,17 +61,7 @@ contract CrossNetworkTransaction {
     }
 
 
-    // asynchronous functions
-    function log(address account, int amount, int t_id) public {
-        Transaction memory transaction = Transaction(account, amount, t_id);
-        for (uint i = undo_log.length; i > 0; i--){
-            undo_log[i] = undo_log[i-1];
-        }
-        undo_log[0] = transaction;
-
-    }
-
-    function commitAsynDebit(address account, uint amount, int t_id)  public returns(int){
+    function commitAsynDebit(address account, uint amount)  public returns(int){
         // account is sending coins. balance verification required
         if (_coin.getBalance(account) < amount){
             // insufficient balance for transaction
@@ -87,19 +71,23 @@ contract CrossNetworkTransaction {
         // log transaction in undo log
         int delta_amount = int(amount);
         delta_amount *= -1;
-        log(account, delta_amount, t_id);
+        undo_log[account] = delta_amount;
 
         // commit debit
         _coin.deductBalance(account, amount);
+
+        return 1;
     }
 
-    function commitAsynCredit(address account, uint amount, int t_id)  public returns(int){
+    function commitAsynCredit(address account, uint amount)  public returns(int){
         
         // log transaction in undo log
         int delta_amount = int(amount);
-        log(account, delta_amount, t_id);
+        undo_log[account] = delta_amount;
 
         // commit debit
         _coin.addBalance(account, amount);
+
+        return 1;
     }
 }
