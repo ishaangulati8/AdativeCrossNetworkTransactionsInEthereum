@@ -15,6 +15,9 @@ contract CrossNetworkTransaction {
     Coin _coin = Coin(0x0);
 
 
+
+
+
     // synchronous functions
     function prepare(address account, int amount) public returns(int) {
        
@@ -60,6 +63,30 @@ contract CrossNetworkTransaction {
         return 1;
     }
 
+
+
+
+    // asynchronous functions
+    function reverseTransaction(address account) public returns(int){
+        
+        int delta_amount = undo_log[account];
+        if (delta_amount < 0){
+            // the transaction was a debit, so we add the amount back to reverse it
+            uint amount = uint(-1*delta_amount);
+            _coin.addBalance(account, amount);
+            return 1;
+        } 
+        else if (delta_amount > 0){
+            // the transaction was a credit, so we deduct the amount to reverse it
+            uint amount = uint(delta_amount);
+            _coin.deductBalance(account, amount);
+            return 1;
+        }
+        else{
+            // there is no entry for this account in the undo log
+            return -1;
+        }
+    }
 
     function commitAsynDebit(address account, uint amount)  public returns(int){
         // account is sending coins. balance verification required
