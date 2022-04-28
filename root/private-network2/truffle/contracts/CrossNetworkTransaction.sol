@@ -8,22 +8,11 @@ contract CrossNetworkTransaction {
     // state variable for synchronous protocol
     mapping (address => int) public pending_transactions; 
 
-<<<<<<< HEAD
-    //state variables for asynchronous protocol
-    struct Transaction { 
-        address account;
-        int amount;
-        string t_id;
-    }
-
-    Transaction[25] undo_log;
-=======
     // state variable for asynchronous protocol
     mapping (address => int) public undo_log; 
->>>>>>> a9d59d8366af3af5a405a0978a72a0c1d9d21d36
     
     // contract address
-    Coin _coin = Coin(0x0);
+    Coin _coin = Coin(0x4Af1fE1955Ed067dcC8BfB8352959b7949d73c6b);
 
 
 
@@ -99,7 +88,7 @@ contract CrossNetworkTransaction {
         }
     }
 
-    function commitAsynDebit(address account, uint amount)  public returns(int){
+    function commitAsyncDebit(address account, uint amount)  public returns(int){
         // account is sending coins. balance verification required
         if (_coin.getBalance(account) < amount){
             // insufficient balance for transaction
@@ -117,7 +106,7 @@ contract CrossNetworkTransaction {
         return 1;
     }
 
-    function commitAsynCredit(address account, uint amount)  public returns(int){
+    function commitAsyncCredit(address account, uint amount)  public returns(int){
         
         // log transaction in undo log
         int delta_amount = int(amount);

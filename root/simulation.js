@@ -1,4 +1,4 @@
-const getContractFile = require('./compileContract');
+const { compileContract: getContractFile, compileCrossNetworkContract } = require('./compileContract');
 
 
 const sabChain1 = new SharedArrayBuffer(1024);
@@ -7,12 +7,23 @@ const chain1Locks = new Int32Array(sabChain1);
 const sabChain2 = new SharedArrayBuffer(1024);
 const chain2Locks = new Int32Array(sabChain2);
 
+const COIN_CHAIN1 = process.env.COIN_CHAIN1 || '0xD74768232a7f5C0A39Bf4b1a70941A512de7f40E';
+const COIN_CHAIN2 = process.env.COIN_CHAIN2 || '0x4Af1fE1955Ed067dcC8BfB8352959b7949d73c6b';
+
+const COIN_CHAIN1_FILEPATH = './private-network1/truffle/contracts/Coin.sol';
+const COIN_CHAIN2_FILEPATH = './private-network2/truffle/contracts/Coin.sol';
+
 const sleep = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
 
-function getContract(web3, contractAddress, contractFilePath) {
-    const contractFile = getContractFile(contractFilePath);
+function getContract(web3, contractAddress, contractFilePath, contractName, coinContractPath) {
+    let contractFile;
+    if (contractName == 'Coin') {
+        contractFile = getContractFile(contractFilePath, contractName);
+    } else {
+        contractFile = compileCrossNetworkContract(contractFilePath, contractName, coinContractPath, 'Coin');
+    }
     const abi = contractFile.abi;
     const minter = new web3.eth.Contract(abi, contractAddress);
     return minter;
@@ -29,12 +40,9 @@ async function getAccounts(web3, locks) {
     return accounts;
 }
 
-function getRandomNumbers(range) {
-    let first = Math.random() * range;
-    let second = Math.random() * range;
-    while (Math.ceil(first) == Math.floor(second)) {
-        second = Math.random() * range;
-    }
+function getRandomNumbers(chain1Range, chain2Range) {
+    let first = Math.random() * chain1Range;
+    let second = Math.random() * chain2Range;
     return [Math.ceil(first), Math.floor(second)];
 
 }
@@ -51,27 +59,35 @@ function getRandomAmount() {
     return amount
 }
 
-async function makeRandomSyncTransactions({
+async function makeRandomTransactions({
     chain1Web3, chain2Web3, chain1ContractAddress,
     chain1ContractFilePath, chain2ContractAddress,
-    chain2ContractFilePath }) {
+    chain2ContractFilePath, type }) {
     try {
-        const chain1Contract = getContract(chain1Web3, chain1ContractAddress, chain1ContractFilePath);
-        const chain2Contract = getContract(chain2Web3, chain2ContractAddress, chain2ContractFilePath);
+        const chain1Contract = getContract(chain1Web3, chain1ContractAddress, chain1ContractFilePath, 'CrossNetworkTransaction', COIN_CHAIN1_FILEPATH);
+        const chain2Contract = getContract(chain2Web3, chain2ContractAddress, chain2ContractFilePath, 'CrossNetworkTransaction', COIN_CHAIN2_FILEPATH);
         const chain1Accounts = await getAccounts(chain1Web3, chain1Locks);
         const chain2Accounts = await getAccounts(chain2Web3, chain2Locks);
-        if (accounts.length == 0 || accounts.length == 1) {
+        if (chain1Accounts.length == 0 || chain2Accounts.length == 1) {
             throw new Error("Please add more accounts to continue.");
         }
         await unlockAccounts(chain1Web3, chain1Accounts);
-        await unlockAccounts(chain1Web3, chain2Accounts);
+        await unlockAccounts(chain2Web3, chain2Accounts);
         const transactions = [];
-        for (let i = 0; i < 100; i++) {
-            transactions.push(makeTransactions({
-                chain1Web3, chain2Web3,
-                chain1Contract, chain2Contract,
-                chain1Accounts, chain2Accounts
-            }));
+        for (let i = 0; i < 1; i++) {
+            if (type === 'SYNC') {
+                transactions.push(makeSyncTransactions({
+                    chain1Web3, chain2Web3,
+                    chain1Contract, chain2Contract,
+                    chain1Accounts, chain2Accounts
+                }));
+            } else {
+                transactions.push(makeAsyncTransaction({
+                    chain1Web3, chain2Web3,
+                    chain1Contract, chain2Contract,
+                    chain1Accounts, chain2Accounts
+                }));
+            }
         }
         await Promise.all(transactions);
     } catch (error) {
@@ -80,13 +96,13 @@ async function makeRandomSyncTransactions({
     }
 }
 
-async function makeSyncTransactions({ chain1Web3, chain2Web3,
-    chain1Contract, chain2Contract,
-    chain1Accounts, chain2Accounts }) {
+async function makeSyncTransactions({
+    chain1Web3, chain2Web3, chain1Contract,
+    chain2Contract, chain1Accounts, chain2Accounts }) {
     let first, second;
     try {
-        [first, second] = getRandomNumbers(accounts.length - 1);
-        while (Atomics.compareExchange(chain1Locks, first, 1, 0) === 1 && Atomics.compareExchange(chain2Locks, second, 1, 0) === 1) {
+        [first, second] = getRandomNumbers(chain1Accounts.length - 1, chain2Accounts.length - 1);
+        while (Atomics.compareExchange(chain1Locks, first, 1, 0) === 1 || Atomics.compareExchange(chain2Locks, second, 1, 0) === 1) {
             // do nothing wait for accounts to unlock.
             console.log(`inside while loop! for accounts ${first}, ${second}`);
         }
@@ -121,9 +137,8 @@ async function makeSyncTransactions({ chain1Web3, chain2Web3,
             web3: chain2Web3,
         })
         // Unlock the accounts.
-        Atomics.store(locks, first, 0);
-        Atomics.store(locks, second, 0);
-        return transaction;
+        Atomics.store(chain1Locks, first, 0);
+        Atomics.store(chain2Locks, second, 0);
     } catch (error) {
         // call transaction rollback.
         console.error(error);
@@ -132,26 +147,96 @@ async function makeSyncTransactions({ chain1Web3, chain2Web3,
             chain2Contract,
             chain1Account: chain1Accounts[first],
             chain2Account: chain2Accounts[second],
+            chain1Web3, chain2Web3
         });
-        Atomics.store(locks, first, 0);
-        Atomics.store(locks, second, 0);
+        Atomics.store(chain1Locks, first, 0);
+        Atomics.store(chain2Locks, second, 0);
     }
 }
 
+async function makeAsyncTransaction(
+    { chain1Web3, chain2Web3, chain1Contract,
+        chain2Contract, chain1Accounts, chain2Accounts }) {
+    let first, second, amount;
+    try {
+        [first, second] = getRandomNumbers(chain1Accounts.length - 1, chain2Accounts.length - 1);
+        while (Atomics.compareExchange(chain1Locks, first, 1, 0) === 1) {
+            //wait for account to unlock.
+        }
+        // lock chain 1 account
+        Atomics.store(chain1Locks, first, 1);
+        //call debit async
+        amount = getRandomAmount();
+        await debitAsync({ account: chain1Accounts[first], contract: chain1Contract, web3: chain1Web3, amount });
+        while (Atomics.compareExchange(chain2Locks, second, 1, 0) === 1) {
+            //wait for the account to unlock.
+        }
+        // lock the account.
+        Atomics.store(chain2Locks, second, 1);
+        await creditAsync({ account: chain2Accounts[second], contract: chain2Contract, web3: chain2Web3, amount });
+        // unlock the accounts.
+        Atomics.store(chain1Locks, first, 0);
+        Atomics.store(chain2Locks, second, 0);
+        // check 
+    } catch (error) {
+        console.log(error);
+        // rollback the transaction for both of the accounts.
+        await rollbackAsync({
+            chain1Account: chain1Accounts[first], chain1Contract,
+            chain2Account: chain2Accounts[second], chain2Contract,
+            chain1Web3, chain2Web3,
+        })
+        Atomics.store(chain1Locks, first, 0);
+        Atomics.store(chain2Locks, second, 0);
+    }
+
+
+}
+
+async function debitAsync({ account, contract, amount, web3 }) {
+    const { transactionHash } = await contract.methods.commitAsyncDebit( account, amount ).send({ from: account });
+    const transactionReceipt = await getTransactionReceipt({ web3, transactionHash });
+    const state = await contract.methods.undo_log(account).call();
+    if (Math.abs(state) != amount) {
+        throw new Error('TRANSACTION_ROLLBACK');
+    }
+    return transactionReceipt;
+}
+
+async function creditAsync({ account, contract, amount, web3 }) {
+    const { transactionHash } = await contract.methods.commitAsyncCredit(account, amount).send({ from: account });
+    const transactionReceipt = await getTransactionReceipt({ transactionHash, web3 });
+    const state = await contract.methods.undo_log(account).call();
+    if (state != amount) {
+        throw new Error('TRANSACTION_ROLLBACK');
+    }
+    return transactionReceipt;
+}
+
 async function prepare({ account, contract, amount, web3 }) {
-    const transactionHash = await contract.methods.prepare(account, amount).send({ from: account });
-    let transactionReceipt = await getTransactionReceipt({transactionHash, web3});
-    const state = await contract.pending_transaction.call();
-    if (state[account] != amount) {
+    const { transactionHash } = await contract.methods.prepare(account, amount).send({ from: account });
+    let transactionReceipt = await getTransactionReceipt({ transactionHash, web3 });
+    const state = await contract.methods.pending_transactions(account).call();
+    if (state != amount) {
         throw new Error('TRANSACTION_ROLLBACK');
     }
 }
 
-async function rollback({
-    chain1Contract,
-    chain2Contract,
-    chain1Account,
-    chain2Account }) {
+async function rollbackAsync({
+    chain1Account, chain1Contract, chain2Account, chain2Contract, chain1Web3, chain2Web3
+}) {
+    try {
+        const chain1TransactionHash = await chain1Contract.methods.reverseTransaction(chain1Account);
+        const chain1TransactionReceipt = await getTransactionReceipt({ transactionHash: chain1TransactionHash, web3: chain1Web3 });
+        const chain2TransactionHash = await chain2Contract.methods.reverseTransaction(chain2Account);
+        const chain2TransactionReceipt = await getTransactionReceipt({ transactionHash: chain2TransactionHash, web3: chain2Web3 });
+        return { chain1TransactionReceipt, chain2TransactionReceipt };
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function rollback({ chain1Contract, chain2Contract, chain1Account, chain2Account, chain1Web3, chain2Web3 }) {
     try {
         await chain1Contract.methods.abort(chain1Account).send({ from: chain1Account }, async (err, transactionHash) => {
             if (err) {
@@ -159,7 +244,7 @@ async function rollback({
             }
             let transactionReceipt = null;
             while (transactionReceipt === null) {
-                transactionReceipt = await web3.eth.getTransactionReceipt(transactionHash);
+                transactionReceipt = await chain1Web3.eth.getTransactionReceipt(transactionHash);
                 await sleep(1000)
             }
             return transactionReceipt
@@ -168,7 +253,7 @@ async function rollback({
             if (err) {
                 console.log(err);
             }
-            let transactionReceipt = await getTransactionReceipt({transactionHash, web3});
+            let transactionReceipt = await getTransactionReceipt({ transactionHash, web3: chain2Web3 });
             return transactionReceipt;
         })
     } catch (error) {
@@ -178,8 +263,8 @@ async function rollback({
 
 async function commit({ account, contract, web3 }) {
     try {
-        const transactionHash = await contract.methods.commit(account).send({ from: chain1Account })
-        let transactionReceipt = await getTransactionReceipt({transactionHash, web3});
+        const { transactionHash } = await contract.methods.commit(account).send({ from: account })
+        let transactionReceipt = await getTransactionReceipt({ transactionHash, web3 });
         return transactionReceipt;
     } catch (err) {
         throw new Error(err);
@@ -189,17 +274,23 @@ async function commit({ account, contract, web3 }) {
 async function getTransactionReceipt({ transactionHash, web3 }) {
     let transactionReceipt = null;
     while (transactionReceipt == null) {
-        transactionReceipt = await web3.eth.getTransactionReceipt(transactionReceipt);
+        transactionReceipt = await web3.eth.getTransactionReceipt(transactionHash);
         await sleep(1000);
     }
     return transactionReceipt;
 }
 
-async function mint(web3, contractAddress, contractFilePath) {
+async function mint(web3, contractAddress, contractFilePath, chainNumber) {
     try {
 
-        const contract = getContract(web3, contractAddress, contractFilePath);
-        const accounts = await getAccounts(web3);
+        const contract = getContract(web3, contractAddress, contractFilePath, 'Coin');
+        let locks;
+        if (chainNumber == 1) {
+            locks = chain1Locks;
+        } else {
+            locks = chain2Locks;
+        }
+        const accounts = await getAccounts(web3, locks);
         await Promise.all(accounts.map(account => web3.eth.personal.unlockAccount(account, 'pass')));
         await contract.methods.mint().send({ from: accounts[0] }, async (error, transactionHash) => {
             if (error) {
@@ -219,11 +310,11 @@ async function mint(web3, contractAddress, contractFilePath) {
     }
 }
 
-async function getBalances(web3, contractFilePath) {
+async function getBalances(web3, contractFilePath, contractAddress) {
     try {
-        const contractFile = getContractFile(contractFilePath);
+        const contractFile = getContractFile(contractFilePath, 'Coin');
         const abi = contractFile.abi;
-        const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS || '0xE131e4136c6f8B193CbEF6552353ba0D9392D522'
+        const CONTRACT_ADDRESS = contractAddress;
         const minter = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
         const balances = await minter.methods.getBalances().call();
         return balances;
@@ -233,6 +324,4 @@ async function getBalances(web3, contractFilePath) {
 }
 
 
-async function makeRadomAsyncTransaction
-
-module.exports = { getBalances, makeRandomSyncTransactions, mint, sleep };
+module.exports = { getBalances, makeRandomTransactions, mint, sleep };

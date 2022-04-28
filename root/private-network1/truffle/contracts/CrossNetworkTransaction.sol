@@ -12,7 +12,7 @@ contract CrossNetworkTransaction {
     mapping (address => int) public undo_log; 
     
     // contract address
-    Coin _coin = Coin(0x20C319d05fDB8Ae786053E7cdc734324D9804e36);
+    Coin _coin = Coin(0xD74768232a7f5C0A39Bf4b1a70941A512de7f40E);
 
 
 
@@ -86,7 +86,7 @@ contract CrossNetworkTransaction {
         }
     }
 
-    function commitAsynDebit(address account, uint amount)  public returns(int){
+    function commitAsyncDebit(address account, uint amount)  public returns(int){
         // account is sending coins. balance verification required
         if (_coin.getBalance(account) < amount){
             // insufficient balance for transaction
@@ -104,7 +104,7 @@ contract CrossNetworkTransaction {
         return 1;
     }
 
-    function commitAsynCredit(address account, uint amount)  public returns(int){
+    function commitAsyncCredit(address account, uint amount)  public returns(int){
         
         // log transaction in undo log
         int delta_amount = int(amount);

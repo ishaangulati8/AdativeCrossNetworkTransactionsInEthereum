@@ -8,17 +8,17 @@ const Web3 = require('web3');
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { getBalances, makeRandomSyncTransactions, mint, sleep } = require('./simulation.js');
+const { getBalances, makeRandomTransactions, mint, sleep } = require('./simulation.js');
 
 const app = express();
 
 
 app.use(bodyParser.json());
 // TODO: Update Chin2 addresses.
-const COIN_CHAIN1 = process.env.COIN_CHAIN1 || '0x20C319d05fDB8Ae786053E7cdc734324D9804e36';
-const COIN_CHAIN2 = process.env.COIN_CHAIN2 || '0x20C319d05fDB8Ae786053E7cdc734324D9804e36';
-const CROSS_CHAIN1 = process.env.CROSS_CHAIN1 || '0x015C04289174cB550968b23d3e9a447E79ef0b7e';
-const CROSS_CHAIN2 = process.env.CROSS_CHAIN2 || '0x015C04289174cB550968b23d3e9a447E79ef0b7e';
+const COIN_CHAIN1 = process.env.COIN_CHAIN1   || '0xD74768232a7f5C0A39Bf4b1a70941A512de7f40E';
+const COIN_CHAIN2 = process.env.COIN_CHAIN2   || '0x4Af1fE1955Ed067dcC8BfB8352959b7949d73c6b';
+const CROSS_CHAIN1 = process.env.CROSS_CHAIN1 || '0xB166d2e99C6dC468Fbac73e3526daC8cd15E361F';
+const CROSS_CHAIN2 = process.env.CROSS_CHAIN2 || '0x51C621a01b7C9417f4Cd2B0e4B2b6FC6f3C007F3';
 
 const COIN_CHAIN1_FILEPATH = './private-network1/truffle/contracts/Coin.sol';
 const COIN_CHAIN2_FILEPATH = './private-network2/truffle/contracts/Coin.sol';
@@ -40,7 +40,7 @@ app.listen(PORT, async (err) => {
             CHAIN1_WEB3 = new Web3(new Web3.providers.HttpProvider(CHAIN1_IPC_URL));
             CHAIN2_WEB3 = new Web3(new Web3.providers.HttpProvider(CHAIN2_IPC_URL));
             // Add default balance to accounts on both chains.
-            await Promise.all([mint(CHAIN1_WEB3, COIN_CHAIN1, COIN_CHAIN1_FILEPATH), mint(CHAIN2_WEB3, COIN_CHAIN2, COIN_CHAIN2_FILEPATH)]);
+            await Promise.all([mint(CHAIN1_WEB3, COIN_CHAIN1, COIN_CHAIN1_FILEPATH, 1), mint(CHAIN2_WEB3, COIN_CHAIN2, COIN_CHAIN2_FILEPATH, 2)]);
             await sleep(1000);
             console.log('Server started successfully on port: ', PORT);
         }
@@ -53,16 +53,18 @@ app.listen(PORT, async (err) => {
 app.use('/random-transaction', async (req, res, next) => {
     try {
         // TODO: Test
-        await makeRandomSyncTransactions({
+        const { type = 'SYNC' } = req.query;
+        await makeRandomTransactions({
             chain1Web3: CHAIN1_WEB3,
             chain2Web3: CHAIN2_WEB3,
             chain1ContractAddress: CROSS_CHAIN1,
             chain1ContractFilePath: CROSS_CHAIN1_FILEPATH,
             chain2ContractAddress: CROSS_CHAIN2,
             chain2ContractFilePath: CROSS_CHAIN2_FILEPATH,
+            type
         });
-        const chain1Balances = await getBalances(CHAIN1_WEB3, COIN_CHAIN1_FILEPATH);
-        const chain2Balances = await getBalances(CHAIN2_WEB3, COIN_CHAIN2_FILEPATH);
+        const chain1Balances = await getBalances(CHAIN1_WEB3, COIN_CHAIN1_FILEPATH, COIN_CHAIN1);
+        const chain2Balances = await getBalances(CHAIN2_WEB3, COIN_CHAIN2_FILEPATH, COIN_CHAIN2);
         res.status(200).json({
             success: true,
             chain1Balances,
