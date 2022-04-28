@@ -74,7 +74,7 @@ async function makeRandomTransactions({
         await unlockAccounts(chain1Web3, chain1Accounts);
         await unlockAccounts(chain2Web3, chain2Accounts);
         const transactions = [];
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < 250; i++) {
             if (type === 'SYNC') {
                 transactions.push(makeSyncTransactions({
                     chain1Web3, chain2Web3,
