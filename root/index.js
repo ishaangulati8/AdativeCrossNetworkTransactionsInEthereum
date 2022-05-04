@@ -3,7 +3,7 @@ var dotenvExpand = require('dotenv-expand')
 
 var myEnv = dotenv.config()
 dotenvExpand.expand(myEnv)
-
+const os = require('os');
 const Web3 = require('web3');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -14,7 +14,6 @@ const app = express();
 
 
 app.use(bodyParser.json());
-// TODO: Update Chin2 addresses.
 const COIN_CHAIN1 = process.env.COIN_CHAIN1   || '0xD74768232a7f5C0A39Bf4b1a70941A512de7f40E';
 const COIN_CHAIN2 = process.env.COIN_CHAIN2   || '0x4Af1fE1955Ed067dcC8BfB8352959b7949d73c6b';
 const CROSS_CHAIN1 = process.env.CROSS_CHAIN1 || '0xB166d2e99C6dC468Fbac73e3526daC8cd15E361F';
@@ -30,6 +29,13 @@ const PORT = process.env.PORT || 3000;
 
 const CHAIN1_IPC_URL = process.env.CHAIN1_IPC_URL || 'http://127.0.0.1:8543';
 const CHAIN2_IPC_URL = process.env.CHAIN2_IPC_URL || 'http://127.0.0.1:8544';
+
+function getCpuStats() {
+    setInterval(() => {
+        console.log(`CPU usage: ${process.cpuUsage()}`)
+        console.log(`Total Memory: ${((os.totalmem() - os.freemem())/os.totalmem()) / 100}`)
+    }, 1000);
+}
 
 app.listen(PORT, async (err) => {
     try {
@@ -52,8 +58,7 @@ app.listen(PORT, async (err) => {
 
 app.use('/random-transaction', async (req, res, next) => {
     try {
-        // TODO: Test
-        const { type = 'SYNC' } = req.query;
+        const { type = 'SYNC', force = false } = req.query;
         await makeRandomTransactions({
             chain1Web3: CHAIN1_WEB3,
             chain2Web3: CHAIN2_WEB3,
@@ -61,7 +66,7 @@ app.use('/random-transaction', async (req, res, next) => {
             chain1ContractFilePath: CROSS_CHAIN1_FILEPATH,
             chain2ContractAddress: CROSS_CHAIN2,
             chain2ContractFilePath: CROSS_CHAIN2_FILEPATH,
-            type
+            type, force,
         });
         const chain1Balances = await getBalances(CHAIN1_WEB3, COIN_CHAIN1_FILEPATH, COIN_CHAIN1);
         const chain2Balances = await getBalances(CHAIN2_WEB3, COIN_CHAIN2_FILEPATH, COIN_CHAIN2);
@@ -77,11 +82,13 @@ app.use('/random-transaction', async (req, res, next) => {
 
 app.use('/balance', async (req, res, next) => {
     try {
-        const balances = await getBalances(web3);
-        res.json({
+        const chain1Balances = await getBalances(CHAIN1_WEB3, COIN_CHAIN1_FILEPATH, COIN_CHAIN1);
+        const chain2Balances = await getBalances(CHAIN2_WEB3, COIN_CHAIN2_FILEPATH, COIN_CHAIN2);
+        res.status(200).json({
             success: true,
-            balances,
-        })
+            chain1Balances,
+            chain2Balances,
+        });
     } catch (error) {
         next(error);
     }

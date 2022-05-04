@@ -1,5 +1,5 @@
+const os = require('os');
 const { compileContract: getContractFile, compileCrossNetworkContract } = require('./compileContract');
-
 
 const sabChain1 = new SharedArrayBuffer(1024);
 const chain1Locks = new Int32Array(sabChain1);
@@ -12,6 +12,18 @@ const COIN_CHAIN2 = process.env.COIN_CHAIN2 || '0x4Af1fE1955Ed067dcC8BfB8352959b
 
 const COIN_CHAIN1_FILEPATH = './private-network1/truffle/contracts/Coin.sol';
 const COIN_CHAIN2_FILEPATH = './private-network2/truffle/contracts/Coin.sol';
+
+
+function mediate() {
+    const memoryUsagePercentage = ((os.totalmem() - os.freemem()) / os.totalmem()) * 100;
+    const [cpuLoad] = os.loadavg();
+    if (memoryUsagePercentage <= 45 && cpuLoad <= 3.5) {
+        return 'SYNC';
+    } else if ((memoryUsagePercentage >= 45 && memoryUsagePercentage <= 65) && (cpuLoad >= 3.5 && cpuLoad <= 55)) {
+        return 'COMBINATION';
+    }
+    return 'ASYNC';
+}
 
 const sleep = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
@@ -62,7 +74,7 @@ function getRandomAmount() {
 async function makeRandomTransactions({
     chain1Web3, chain2Web3, chain1ContractAddress,
     chain1ContractFilePath, chain2ContractAddress,
-    chain2ContractFilePath, type }) {
+    chain2ContractFilePath, type, force = false }) {
     try {
         const chain1Contract = getContract(chain1Web3, chain1ContractAddress, chain1ContractFilePath, 'CrossNetworkTransaction', COIN_CHAIN1_FILEPATH);
         const chain2Contract = getContract(chain2Web3, chain2ContractAddress, chain2ContractFilePath, 'CrossNetworkTransaction', COIN_CHAIN2_FILEPATH);
@@ -74,14 +86,32 @@ async function makeRandomTransactions({
         await unlockAccounts(chain1Web3, chain1Accounts);
         await unlockAccounts(chain2Web3, chain2Accounts);
         const transactions = [];
-        for (let i = 0; i < 250; i++) {
-            if (type === 'SYNC') {
+        for (let i = 0; i < 5; i++) {
+            if (force !== 'true' || force === false) {
+                type = mediate();
+            }
+            if (type == 'SYNC') {
                 transactions.push(makeSyncTransactions({
                     chain1Web3, chain2Web3,
                     chain1Contract, chain2Contract,
                     chain1Accounts, chain2Accounts
                 }));
-            } else {
+            } else if (type === 'COMBINATION') {
+                if (i % 2 == 0) {
+                    transactions.push(makeSyncTransactions({
+                        chain1Web3, chain2Web3,
+                        chain1Contract, chain2Contract,
+                        chain1Accounts, chain2Accounts
+                    }));
+                } else {
+                    transactions.push(makeAsyncTransaction({
+                        chain1Web3, chain2Web3,
+                        chain1Contract, chain2Contract,
+                        chain1Accounts, chain2Accounts
+                    }));
+                }
+            }
+            else {
                 transactions.push(makeAsyncTransaction({
                     chain1Web3, chain2Web3,
                     chain1Contract, chain2Contract,
@@ -104,7 +134,7 @@ async function makeSyncTransactions({
         [first, second] = getRandomNumbers(chain1Accounts.length - 1, chain2Accounts.length - 1);
         while (Atomics.compareExchange(chain1Locks, first, 1, 0) === 1 || Atomics.compareExchange(chain2Locks, second, 1, 0) === 1) {
             // do nothing wait for accounts to unlock.
-            console.log(`inside while loop! for accounts ${first}, ${second}`);
+            console.log(`Accounts Locked: ${first}, ${second}`);
         }
         // Lock the accounts
         console.log(`outside while loop! for accounts ${first}, ${second}`);
@@ -162,6 +192,8 @@ async function makeAsyncTransaction(
         [first, second] = getRandomNumbers(chain1Accounts.length - 1, chain2Accounts.length - 1);
         while (Atomics.compareExchange(chain1Locks, first, 1, 0) === 1) {
             //wait for account to unlock.
+            console.log(`Account Locked ${chain1Accounts[first]}`)
+
         }
         // lock chain 1 account
         Atomics.store(chain1Locks, first, 1);
@@ -170,6 +202,7 @@ async function makeAsyncTransaction(
         await debitAsync({ account: chain1Accounts[first], contract: chain1Contract, web3: chain1Web3, amount });
         while (Atomics.compareExchange(chain2Locks, second, 1, 0) === 1) {
             //wait for the account to unlock.
+            console.log(`Account Locked ${chain2Accounts[second]}`)
         }
         // lock the account.
         Atomics.store(chain2Locks, second, 1);
@@ -194,7 +227,7 @@ async function makeAsyncTransaction(
 }
 
 async function debitAsync({ account, contract, amount, web3 }) {
-    const { transactionHash } = await contract.methods.commitAsyncDebit( account, amount ).send({ from: account });
+    const { transactionHash } = await contract.methods.commitAsyncDebit(account, amount).send({ from: account });
     const transactionReceipt = await getTransactionReceipt({ web3, transactionHash });
     const state = await contract.methods.undo_log(account).call();
     if (Math.abs(state) != amount) {
